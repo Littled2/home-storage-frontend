@@ -9,8 +9,10 @@ export function NavItem({ icon, href }) {
 
     const pathname = usePathname()
 
+    console.log(pathname)
+
     return (
-        <Link href={href} className={[ styles.item, pathname === href ? styles.selected : ''  ].join(" ")}>
+        <Link href={href} className={[ styles.item, href === "/" && pathname === "/" || pathname.startsWith(href) && href !== "/" ? styles.selected : ''  ].join(" ")}>
             {icon}
         </Link>
     )

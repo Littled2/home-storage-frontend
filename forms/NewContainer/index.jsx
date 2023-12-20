@@ -1,8 +1,6 @@
 'use client'
 
 import styles from "../forms.module.css"
-import Camera from 'react-html5-camera-photo';
-import '../../node_modules/react-html5-camera-photo/build/css/index.css';
 
 export function NewContainer() {
     return (
@@ -18,10 +16,9 @@ export function NewContainer() {
                 <textarea></textarea>
             </div>
 
-            <div>
-                <Camera
-                    onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
-                />
+            <div className={styles.formItem}>
+                <label>Image(s)</label>
+                <input type="file" multiple="true" />
             </div>
 
         </form>

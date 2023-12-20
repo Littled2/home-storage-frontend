@@ -24,8 +24,10 @@ const PocketContext = createContext({});
 
 export const PocketProvider = ({ children }) => {
 
+    /** @type {PocketBase} */
     const pb = useMemo(() => new PocketBase(BASE_URL), [])
 
+    
     const [token, setToken] = useState(pb.authStore.token)
     const [user, setUser] = useState(pb.authStore.model)
 

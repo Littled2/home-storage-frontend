@@ -1,5 +1,5 @@
 import { GoBackLink } from "@/components/GoBackLink";
-import { NewContainer } from "@/forms/NewContainer";
+import { NewLocation } from "@/forms/NewLocation";
 
 export default function NewContainerPage() {
     return (
@@ -8,12 +8,12 @@ export default function NewContainerPage() {
             <GoBackLink href={"/new"} />
 
             <br />
-            
-            <h2>New Container.</h2>
+
+            <h2>New Location.</h2>
 
             <br />
 
-            <NewContainer />
+            <NewLocation />
 
         </section>
     )

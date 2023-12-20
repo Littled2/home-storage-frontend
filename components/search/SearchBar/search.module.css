@@ -1,14 +1,15 @@
 .cont {
     display: flex;
-    gap: 12px;
+    gap: 16px;
     background-color: rgb(240, 240, 240);
-    padding: 8px;
     align-items: center;
     border-radius: 12px;
     color: rgb(44, 44, 44);
+    padding: 0 22px;
 }
 
 .inpt {
+    padding: 16px 0;
     font-size: 1.2rem;
     font-weight: 400;
     font-family: inherit;

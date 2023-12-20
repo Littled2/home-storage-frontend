@@ -3,10 +3,27 @@
     margin: auto;
     height: 100vh;
     position: relative;
-    border: 1px solid grey;
 }
 
 .content {
-    padding: 12px;
-    padding-top: 28px;
+    padding: 16px;
+    padding-top: 34px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 25vh;
+}
+
+@media screen and (min-width: 600px) {
+    .appWrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        max-width: unset;
+        gap: 18px;
+    }
+
+    .content {
+        width: 800px;
+    }
 }

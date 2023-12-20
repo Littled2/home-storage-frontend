@@ -12,3 +12,16 @@ body {
     margin: 0;
 }
 
+.page-heading {
+    font-size: 2rem;
+}
+
+h1, h2, h3, h4, h5, p {
+    margin: 0;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    font-family: inherit;
+}

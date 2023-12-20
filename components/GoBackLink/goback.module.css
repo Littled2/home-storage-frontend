@@ -1,0 +1,16 @@
+.link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgb(26, 26, 26);
+    text-decoration: none;
+    padding: 12px;
+    background-color: rgb(239, 239, 239);
+    border-radius: 12px;
+    width: fit-content;
+    font-weight: 500;
+}
+
+.link:hover {
+    background-color: rgb(201, 201, 201);
+}

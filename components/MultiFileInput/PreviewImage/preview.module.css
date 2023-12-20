@@ -1,0 +1,5 @@
+.preview {
+    height: 6rem;
+    display: flex;
+    gap: 6px;
+}
