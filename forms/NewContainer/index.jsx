@@ -21,6 +21,10 @@ export function NewContainer() {
                 <input type="file" multiple="true" />
             </div>
 
+            <div className={styles.submitCont}>
+                <button type="submit">Create</button>
+            </div>
+
         </form>
     )
 }
