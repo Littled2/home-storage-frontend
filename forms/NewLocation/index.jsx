@@ -3,16 +3,21 @@
 import { useRef } from "react"
 import styles from "../forms.module.css"
 import { useRouter } from "next/navigation"
+import { usePocket } from "@/contexts/PocketContext"
 
 export function NewLocation() {
 
     const nameInpt = useRef()
     const router = useRouter()
 
+    const { pb } = usePocket()
+
     async function submit(e) {
         e.preventDefault()
 
-        pb.collection("location").create({ name: nameInpt.current.value })
+        console.log("submitting")
+
+        pb.collection("locations").create({ name: nameInpt.current.value })
         .then(() => {
             router.push("/storage")
         })
@@ -20,11 +25,11 @@ export function NewLocation() {
     }
 
     return (
-        <form className={styles.form} onSubmit={submit}>
+        <form className={styles.form} onSubmit={(e) => submit(e)}>
 
             <div className={styles.formItem}>
                 <label>Name</label>
-                <input type="text" placeholder="Eg. 48 The Road" ref={nameInpt} />
+                <input type="text" required placeholder="Eg. 48 The Road" ref={nameInpt} />
             </div>
 
             <div className={styles.submitCont}>

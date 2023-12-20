@@ -24,5 +24,3 @@ export function NewContainer() {
         </form>
     )
 }
-
-// $ npm install --save dropzone

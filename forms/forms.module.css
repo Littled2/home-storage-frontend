@@ -5,6 +5,7 @@
 }
 
 .formItem > input[type=text],
+.formItem > input[type=password],
 .formItem > textarea {
     background-color: rgb(234, 234, 234);
     border-radius: 6px;
@@ -42,4 +43,5 @@
     font-family: inherit;
     width: 100%;
     border: none;
+    cursor: pointer;
 }
