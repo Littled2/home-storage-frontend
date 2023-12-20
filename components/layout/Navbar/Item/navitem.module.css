@@ -1,0 +1,16 @@
+.item {
+    padding: 6px;
+    font-size: 1.75rem;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected {
+    color: rgb(20, 23, 24);
+    background-color: white;
+}

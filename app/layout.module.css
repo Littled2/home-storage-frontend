@@ -1,0 +1,12 @@
+.appWrapper {
+    max-width: 600px;
+    margin: auto;
+    height: 100vh;
+    position: relative;
+    border: 1px solid grey;
+}
+
+.content {
+    padding: 12px;
+    padding-top: 28px;
+}

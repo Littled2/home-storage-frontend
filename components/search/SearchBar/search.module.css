@@ -1,0 +1,27 @@
+.cont {
+    display: flex;
+    gap: 12px;
+    background-color: rgb(240, 240, 240);
+    padding: 8px;
+    align-items: center;
+    border-radius: 12px;
+    color: rgb(44, 44, 44);
+}
+
+.inpt {
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: inherit;
+    flex: 1;
+    color: rgb(44, 44, 44);
+    background-color: transparent;
+    border: none;
+}
+
+.inpt:focus {
+    outline: none;
+}
+
+.cont:focus-within {
+    outline: 1px solid grey;
+}

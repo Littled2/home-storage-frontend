@@ -1,0 +1,13 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    border-radius: 1000px;
+    background-color: rgb(20, 23, 24);
+    padding: 16px;
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+}
