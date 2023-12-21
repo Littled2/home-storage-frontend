@@ -4,7 +4,7 @@
     flex-direction: column;
 }
 
-.btns > a {
+.btns > a, .btns > button {
     padding: 16px 18px;
     display: flex;
     align-items: center;

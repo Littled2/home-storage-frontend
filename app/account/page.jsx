@@ -1,14 +1,29 @@
+'use client'
+
 import { FaArrowRight } from "react-icons/fa6"
 import styles from "./account.module.css"
 import Link from "next/link"
 import { LuLogOut } from "react-icons/lu"
+import { usePocket } from "@/contexts/PocketContext"
+import { useEffect, useState } from "react"
 
 export default function AccountPage() {
+
+    const { user, logout, pb } = usePocket()
+
+    const [ group, setGroup ] = useState(null)
+
+    useEffect(() => {
+        pb.collection("groups").getOne(user.gid)
+        .then(doc => setGroup(doc))
+    })
+
     return (
         <section className={styles.page}>
 
             <h2>Your Account.</h2>
-            <p>Logged in as: <span>Edward Blewitt</span></p>
+            <p>Logged in as: <span>{JSON.stringify(user)}</span></p>
+            {/* <p>Group: <span>{group.name}</span></p> */}
 
             <div className={styles.btns}>
 
@@ -17,10 +32,10 @@ export default function AccountPage() {
                     <FaArrowRight />
                 </Link>
 
-                <Link href={"/account/change-password"}>
+                <button href={"/account/change-password"} onClick={logout}>
                     <span>Log Out</span>
                     <LuLogOut />
-                </Link>
+                </button>
 
             </div>
 

@@ -4,24 +4,23 @@ import { useRef } from "react"
 import styles from "../forms.module.css"
 import { useRouter } from "next/navigation"
 import { usePocket } from "@/contexts/PocketContext"
-import { usePocket } from "@/contexts/PocketContext"
 
 export function NewLocation() {
 
     const nameInpt = useRef()
     const router = useRouter()
 
-    const { user } = usePocket()
+    const { user, pb } = usePocket()
 
     async function submit(e) {
         e.preventDefault()
 
-        pb.collection("location").create({
+        pb.collection("locations").create({
             name: nameInpt.current.value,
-            uid: user.id
+            gid: user.gid
         })
-        .then(() => {
-            router.push("/storage")
+        .then((e) => {
+            router.push("/location/" + e.id)
         })
         
     }

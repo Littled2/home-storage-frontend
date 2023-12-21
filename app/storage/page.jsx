@@ -15,7 +15,7 @@ export default function StoragePage() {
             <h2 className="page-heading">Storage</h2>
 
             <div className={styles.locations}>
-                <LocationSelect location={{id:"sdas"}} />
+                <LocationSelect location={location} setLocation={setLocation} />
             </div>
 
             <ContainersView />

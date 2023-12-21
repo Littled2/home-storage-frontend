@@ -33,6 +33,7 @@ export const PocketProvider = ({ children }) => {
 
     useEffect(() => {
         return pb.authStore.onChange((token, model) => {
+          console.log({token,model})
           setToken(token)
           setUser(model)
         })
@@ -65,11 +66,10 @@ export const PocketProvider = ({ children }) => {
             await pb.collection("users").authRefresh();
         }
     }, [token]);
+
+    pb.autoCancellation(false);
     
     useInterval(refreshSession, token ? twoMinutesInMs : null);
-
-    console.log(pb)
-
 
     return (
         <PocketContext.Provider
