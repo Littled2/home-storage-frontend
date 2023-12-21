@@ -1,0 +1,17 @@
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+}
+
+.top > a {
+    color: rgb(0, 132, 255);
+}
+
+.containers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: auto;
+    gap: 12px;
+}

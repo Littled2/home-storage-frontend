@@ -16,6 +16,11 @@ body {
     font-size: 2rem;
 }
 
+.icon-heading {
+    display: flex;
+    gap: 1em;
+}
+
 h1, h2, h3, h4, h5, p {
     margin: 0;
 }
