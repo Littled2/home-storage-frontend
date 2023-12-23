@@ -4,6 +4,7 @@ import { LocationSelect } from "@/components/LocationSelect"
 import styles from "./storage.module.css"
 import { useState } from "react"
 import { ContainersView } from "@/components/ContainersView"
+import { PlacesView } from "@/components/PlacesView"
 
 export default function StoragePage() {
 
@@ -12,13 +13,27 @@ export default function StoragePage() {
     return (
         <section className={styles.page}>
 
-            <h2 className="page-heading">Storage</h2>
+            <h2 className="page-heading">Your Entire Storage.</h2>
 
             <div className={styles.locations}>
                 <LocationSelect location={location} setLocation={setLocation} />
             </div>
 
-            <ContainersView />
+            {
+                location ? (
+
+                    <>
+                    
+                        <PlacesView locationID={location?.id} />
+
+                        <ContainersView locationID={location?.id} />
+
+                    </>
+
+                ) : (
+                    <></>
+                )
+            }
 
         </section>
     )

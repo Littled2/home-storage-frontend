@@ -1,9 +1,15 @@
+'use client'
+
 import styles from "./homepage.module.css"
 
 import { Results } from "@/components/search/Results";
 import { SearchBar } from "@/components/search/SearchBar";
+import { useState } from "react";
 
 export default function Homepage() {
+
+    const [ query, setQuery ] = useState('')
+
     return (
         <div>
 
@@ -15,12 +21,12 @@ export default function Homepage() {
 
             <div className={styles.search}>
 
-                <SearchBar />
+                <SearchBar query={query} setQuery={setQuery} />
 
             </div>
             
 
-            <Results />
+            <Results query={query} />
 
         </div>
     )

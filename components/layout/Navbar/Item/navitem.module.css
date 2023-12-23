@@ -1,16 +1,35 @@
 .item {
     padding: 6px;
     font-size: 1.75rem;
-    border-radius: 50%;
+    border-radius: 1000px;
     width: 2rem;
     height: 2rem;
     color: whitesmoke;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 16px;
 }
 
 .selected {
     color: rgb(20, 23, 24);
     background-color: white;
+}
+
+.lbl {
+    display: none;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 600px) {
+    .item {
+        width: 100%;
+        height: unset;
+        justify-content: left;
+        padding: 8px 14px;
+    }
+    .lbl {
+        display: block;
+    }
 }

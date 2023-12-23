@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "./navitem.module.css"
 import { usePathname } from "next/navigation";
 
-export function NavItem({ icon, href }) {
+export function NavItem({ icon, href, label }) {
 
     const pathname = usePathname()
 
@@ -14,6 +14,7 @@ export function NavItem({ icon, href }) {
     return (
         <Link href={href} className={[ styles.item, href === "/" && pathname === "/" || pathname.startsWith(href) && href !== "/" ? styles.selected : ''  ].join(" ")}>
             {icon}
+            <span className={styles.lbl}>{label}</span>
         </Link>
     )
 }

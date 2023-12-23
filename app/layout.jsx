@@ -6,16 +6,15 @@ import Navbar from "@/components/layout/Navbar";
 import "./globals.css"
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { AuthCheck } from "@/components/AuthCheck";
 
 export default function HomeLayout({ children }) {
-
-    const { user } = usePocket()
-    const pathname = usePathname()
 
     return (
         <html>
             <body>
                 <PocketProvider>
+                    <AuthCheck />
                     <main className={styles.appWrapper}>
 
                         <section className={styles.content}>

@@ -2,13 +2,15 @@
 
 import { usePocket } from "@/contexts/PocketContext"
 import styles from "../forms.module.css"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 
 export function Login() {
 
     const emailInput = useRef()
     const passwordInput = useRef()
+
+    const [error, setError] = useState(null)
 
     const { login } = usePocket()
 
@@ -24,7 +26,9 @@ export function Login() {
             console.log(e)
             router.push("/")
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            setError(true)
+        })
 
     }
 
@@ -40,6 +44,14 @@ export function Login() {
                 <label>Password</label>
                 <input type="password" ref={passwordInput} />
             </div>
+
+            {
+                error ? (
+                    <p style={{color:"red"}}>Incorrect username or password</p>
+                ) : (
+                    <></>
+                )
+            }
 
             <div className={styles.submitCont}>
                 <button type="submit">Log In</button>

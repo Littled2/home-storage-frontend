@@ -1,0 +1,10 @@
+.input {
+    font-size: inherit;
+    font-family: inherit;
+    font: inherit;
+    border: none;
+    background-color: transparent;
+    white-space: wrap;
+    width: 100%;
+    resize: none;
+}

@@ -14,4 +14,24 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-template-rows: auto;
     gap: 12px;
+    min-height: 12rem;
+}
+
+.btnCont {
+    display: flex;
+    justify-content: right;
+}
+
+.btnCont > button {
+    padding: 14px 22px;
+    border-radius: 8px;
+    background-color: rgb(233, 233, 233);
+}
+
+.topBtn {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    color: rgb(0, 132, 255);
+    font-size: 1rem;
 }

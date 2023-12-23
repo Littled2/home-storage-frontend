@@ -18,7 +18,8 @@ body {
 
 .icon-heading {
     display: flex;
-    gap: 1em;
+    align-items: center;
+    gap: 0.5em;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -29,4 +30,17 @@ button {
     background-color: transparent;
     border: none;
     font-family: inherit;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+}
+
+a {
+    text-decoration: none;
 }

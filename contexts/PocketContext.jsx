@@ -10,10 +10,13 @@ import {
 } from "react";
 import PocketBase from "pocketbase";
 import { useInterval } from "usehooks-ts";
-import jwtDecode from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import ms from "ms";
+import { useRouter } from "next/navigation";
 
-const BASE_URL = "http://127.0.0.1:8090";
+// const BASE_URL = "http://127.0.0.1:8090";
+const BASE_URL = "http://192.168.1.196:8090";
+
 const fiveMinutesInMs = ms("5 minutes");
 const twoMinutesInMs = ms("2 minutes");
 
@@ -26,6 +29,7 @@ export const PocketProvider = ({ children }) => {
 
     const pb = useMemo(() => new PocketBase(BASE_URL), [])
 
+    const { router } = useRouter()
     
     const [token, setToken] = useState(pb.authStore.token)
     const [user, setUser] = useState(pb.authStore.model)
@@ -53,6 +57,7 @@ export const PocketProvider = ({ children }) => {
 
     const logout = useCallback(() => {
         pb.authStore.clear()
+        router.push("/login")
     }, [])
 
 

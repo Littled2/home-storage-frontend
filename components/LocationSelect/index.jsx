@@ -12,9 +12,14 @@ export function LocationSelect({ location, setLocation }) {
 
     useEffect(() => {
         pb.collection("locations").getFullList({
-            filter:"gid = " + user.gid
+            filter:`gid = '${user.gid}'`,
+            sort: "-name"
         })
-        .then(locs => setLocations(locs))
+        .then(locs => {
+            setLocations(locs)
+            let loc = locs.find(l => l.id === user.activeLocation)
+            setLocation(loc ? loc : locs[0])
+        })
     }, [])
 
     return (
@@ -23,7 +28,7 @@ export function LocationSelect({ location, setLocation }) {
             {
                 locations?.map(l => {
                     return (
-                        <button className={[ styles.location, location.id === l.id ? styles.selected : '' ].join(" ")} onClick={() => setLocation(l)}>
+                        <button className={[ styles.location, location?.id === l.id ? styles.selected : '' ].join(" ")} onClick={() => setLocation(l)}>
                             {l.name}
                         </button>
                     )

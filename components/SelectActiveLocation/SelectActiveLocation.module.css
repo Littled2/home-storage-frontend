@@ -1,0 +1,38 @@
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.wrapper > button {
+    padding: 14px 22px;
+    display: flex;
+    gap: 12px;
+    background-color: rgb(246, 246, 246);
+    border-radius: 8px;
+    border: 0.5px solid rgb(161, 161, 161);
+}
+
+.wrapper > button:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+.selected {
+    outline: 2px solid rgb(0, 140, 255) !important;
+}
+
+.none {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.none a {
+    color: inherit;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: rgb(20, 165, 255);
+    color: whitesmoke;
+}

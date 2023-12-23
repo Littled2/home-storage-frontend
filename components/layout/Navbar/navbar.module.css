@@ -16,6 +16,9 @@
     .nav {
         position: static;
         flex-direction: column;
-        height: fit-content;
+        height: 100%;
+        border-radius: 0;
+        justify-content: flex-start;
+        padding-top: 44px;
     }
 }

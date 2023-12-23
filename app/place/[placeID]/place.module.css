@@ -1,0 +1,15 @@
+.location {
+    border-radius: 1000px;
+    font-weight: 400;
+    padding: 8px 18px;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    white-space: nowrap;
+    background-color: rgb(44, 44, 44);
+    color: whitesmoke;
+}
+
+.titleCont {
+    padding-bottom: 48px;
+}

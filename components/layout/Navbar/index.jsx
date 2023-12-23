@@ -28,13 +28,13 @@ export default function Navbar() {
     return render ? (
         <nav className={styles.nav}>
 
-            <NavItem href={"/account"} icon={<RxPerson />} />
+            <NavItem href={"/account"} icon={<RxPerson />} label={"Account"} />
 
-            <NavItem href={"/"} icon={<LuSearch />} />
+            <NavItem href={"/"} icon={<LuSearch />} label={"Search"} />
 
-            <NavItem href={"/storage"} icon={<BsBoxSeam />} />
+            <NavItem href={"/storage"} icon={<BsBoxSeam />} label={"Storage"} />
 
-            <NavItem href={"/new"} icon={<MdOutlineAddBox />} />
+            <NavItem href={"/new"} icon={<MdOutlineAddBox />} label={"New"} />
 
         </nav>
     ) : (

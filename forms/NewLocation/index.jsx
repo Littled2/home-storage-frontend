@@ -12,21 +12,20 @@ export function NewLocation() {
 
     const { user, pb } = usePocket()
 
-    async function submit(e) {
-        e.preventDefault()
+    async function submit() {
 
         pb.collection("locations").create({
             name: nameInpt.current.value,
             gid: user.gid
         })
         .then((e) => {
-            router.push("/location/" + e.id)
+            router.push("/storage/location/" + e.id)
         })
         
     }
 
     return (
-        <form className={styles.form} onSubmit={(e) => submit(e)}>
+        <div className={styles.form}>
 
             <div className={styles.formItem}>
                 <label>Name</label>
@@ -34,9 +33,9 @@ export function NewLocation() {
             </div>
 
             <div className={styles.submitCont}>
-                <button type="submit">Create</button>
+                <button type="submit" onClick={submit}>Create</button>
             </div>
-        </form>
+        </div>
     )
 }
 

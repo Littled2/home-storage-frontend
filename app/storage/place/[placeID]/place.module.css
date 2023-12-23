@@ -1,0 +1,16 @@
+.heading {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.location {
+    background-color: rgb(33, 33, 33);
+    color: whitesmoke;
+    padding: 8px 16px;
+    border-radius: 1000px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}

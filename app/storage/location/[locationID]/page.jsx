@@ -1,6 +1,7 @@
 'use client'
 
 import { ContainersView } from "@/components/ContainersView"
+import { EditText } from "@/components/EditText"
 import { usePocket } from "@/contexts/PocketContext"
 import { useEffect, useState } from "react"
 
@@ -19,8 +20,15 @@ export default function LocationView({ params }) {
 
     return (
         <section>
-            <h1>Location View.</h1>
-            <h1>{location?.name}</h1>
+            <h1>
+                {
+                    location ? (
+                        <EditText text={location.name} collection={"locations"} id={location.id} field={"name"} />
+                    ) : (
+                        <></>
+                    )
+                }
+            </h1>
 
             <br />
 
