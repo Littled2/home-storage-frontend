@@ -3,7 +3,7 @@ import { Place } from "./Place";
 import { useEffect, useState } from "react";
 import { usePocket } from "@/contexts/PocketContext";
 
-export function PlacesView({ locationID }) {
+export function PlacesView({ locationID, capped }) {
 
     const { pb, user } = usePocket()
 

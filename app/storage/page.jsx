@@ -2,13 +2,13 @@
 
 import { LocationSelect } from "@/components/LocationSelect"
 import styles from "./storage.module.css"
-import { useState } from "react"
 import { ContainersView } from "@/components/ContainersView"
 import { PlacesView } from "@/components/PlacesView"
+import { usePocket } from "@/contexts/PocketContext"
 
 export default function StoragePage() {
 
-    const [ location, setLocation ] = useState(null)
+    const { user } = usePocket()
 
     return (
         <section className={styles.page}>
@@ -16,24 +16,13 @@ export default function StoragePage() {
             <h2 className="page-heading">Your Entire Storage.</h2>
 
             <div className={styles.locations}>
-                <LocationSelect location={location} setLocation={setLocation} />
+                <LocationSelect />
             </div>
-
-            {
-                location ? (
-
-                    <>
                     
-                        <PlacesView locationID={location?.id} />
+            <PlacesView locationID={user?.activeLocation} />
 
-                        <ContainersView locationID={location?.id} />
+            <ContainersView locationID={user?.activeLocation} />
 
-                    </>
-
-                ) : (
-                    <></>
-                )
-            }
 
         </section>
     )

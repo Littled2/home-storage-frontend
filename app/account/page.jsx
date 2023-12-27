@@ -7,44 +7,39 @@ import { LuLogOut } from "react-icons/lu"
 import { usePocket } from "@/contexts/PocketContext"
 import { useEffect, useState } from "react"
 import { SelectActiveLocation } from "@/components/SelectActiveLocation"
-import { BsHouse } from "react-icons/bs"
+import { BsHouse, BsPerson } from "react-icons/bs"
 
 export default function AccountPage() {
 
     const { user, logout, pb } = usePocket()
 
     const [ group, setGroup ] = useState(null)
+    
+    const [ itemsCount, setItemsCount ] = useState(0)
+    const [ containersCount, setContainersCount ] = useState(0)
+
 
     useEffect(() => {
+
+        if(!user) return
+
         pb.collection("groups").getOne(user.gid)
         .then(doc => setGroup(doc))
-    })
+
+        pb.collection("items_count").getOne(user.gid)
+        .then(doc => setItemsCount(doc.count))
+
+        pb.collection("containers_count").getOne(user.gid)
+        .then(doc => setContainersCount(doc.count))
+
+
+    }, [user])
 
     return (
         <section className={styles.page}>
 
-            <h1>Hi there, {user?.name}</h1>
-
-            <div>
-
-                <h3>Your Locations</h3>
-
-                <br />
-
-                <SelectActiveLocation />
-
-            </div>
-
-
-            <br />
-            
-            <br />
-
-            <h3>Your Account.</h3>
-            <p><span>{user?.email}</span></p>
-
-            <br />
-
+            <h1>Your Account.</h1>
+            <h3>Logged in as {user?.name}</h3>
 
             <br />
 
@@ -53,11 +48,6 @@ export default function AccountPage() {
                 <Link href={"/account/change-password"}>
                     <span>Change Password</span>
                     <FaArrowRight />
-                </Link>
-
-                <Link href={"/new/location"}>
-                    <span>Add new location</span>
-                    <BsHouse />
                 </Link>
 
                 <button href={"/account/change-password"} onClick={logout}>

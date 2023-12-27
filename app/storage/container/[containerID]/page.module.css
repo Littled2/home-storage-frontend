@@ -1,4 +1,17 @@
 .top {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 14px;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.locationInfoCont {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
 }

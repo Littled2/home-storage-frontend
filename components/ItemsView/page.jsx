@@ -6,7 +6,8 @@ import styles from "./items.module.css"
 import { MdAdd, MdEdit } from "react-icons/md"
 import { RxExit } from "react-icons/rx"
 import { FaCross } from "react-icons/fa6"
-import { BsX } from "react-icons/bs"
+import { BsImage, BsX } from "react-icons/bs"
+import Compressor from "compressorjs"
 
 export function ItemsView({ containerID }) {
 
@@ -15,6 +16,11 @@ export function ItemsView({ containerID }) {
     const [ items, setItems ] = useState()
 
     const [ c, sc ] = useState(0)
+
+    const [ image, setImage ] = useState()
+    const [ preview, setPreview ] = useState()
+
+    const fileInputRef = useRef()
 
     const itemRef = useRef()
 
@@ -43,12 +49,29 @@ export function ItemsView({ containerID }) {
     const addItem = useCallback(() => {
         pb.collection("items").create({
             name: itemRef.current.value,
-            description: '',
             container: containerID,
             gid: user.gid
         })
-        itemRef.current.value = ""
-    }, [])
+        .then((item) => {
+
+            if(!image) {
+                itemRef.current.value = ""
+                setImage(null)
+                setPreview(null)
+                return
+            }
+
+            const fd = new FormData()
+            fd.append("image", image)
+
+            pb.collection("items").update(item.id, fd)
+            .then(() => {
+                itemRef.current.value = ""
+                setImage(null)
+                setPreview(null)
+            })
+        })
+    }, [image, preview])
 
 
     const removeItem = useCallback((id) => {
@@ -61,6 +84,19 @@ export function ItemsView({ containerID }) {
         }
     }
 
+    function fileChange(e) {
+        if(e.target.files.length !== 0) {
+            new Compressor(e.target.files[0], {
+                maxWidth: 480,
+                maxHeight: 480,
+                success: res => {
+                    setImage(res)
+                    setPreview(URL.createObjectURL(res))
+                }
+            })
+        }
+    }
+
 
     return (
         <article className={styles.wrapper}>
@@ -70,7 +106,16 @@ export function ItemsView({ containerID }) {
                     items?.map(item => {
                         return (
                             <li className={styles.item} key={item.id}>
-                                <span>{item.name}</span>
+                                <div className={styles.itemInner}>
+                                    {
+                                        item?.image ? (
+                                            <img src={pb.files.getUrl(item, item.image, { thumb: '120x120' })}/>
+                                        ) : (
+                                            <></>
+                                        )
+                                    }
+                                    <span>{item.name}</span>
+                                </div>
                                 <button onClick={() => removeItem(item.id)}>
                                     <BsX />
                                 </button>
@@ -91,6 +136,11 @@ export function ItemsView({ containerID }) {
 
             <div className={styles.controls}>
 
+                <input type="file" accept="image/*" ref={fileInputRef} hidden="true" onChange={(e) => fileChange(e)} />
+                
+                <button className={styles.addBtn} onClick={() => fileInputRef.current.click()}>
+                    <BsImage />
+                </button>
 
                 <input className={styles.input} type="text" placeholder="Enter a new item" ref={itemRef} onKeyDown={keyPress} />
                 <button className={styles.addBtn} onClick={addItem}>
@@ -100,6 +150,17 @@ export function ItemsView({ containerID }) {
 
 
             </div>
+            
+            {
+                image ? (
+                    <div className={styles.img}>
+                        <button onClick={() => {fileInputRef.current.value = null; setImage(null); setPreview(null)}}><BsX /></button>
+                        <img src={preview} />
+                    </div>
+                ) : (
+                    <></>
+                )
+            }
 
         </article>
     )

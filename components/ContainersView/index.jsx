@@ -29,7 +29,7 @@ export function ContainersView({ placeID, locationID }) {
 
             <div className={styles.top}>
                 <h3>Containers</h3>
-                <Link className={styles.topBtn} href={"/new/container"}>
+                <Link className={styles.topBtn} href={{ pathname: "/new/container", query: { place: placeID } }}>
                     <span>Add container</span>
                     <BsPlus />
                 </Link>

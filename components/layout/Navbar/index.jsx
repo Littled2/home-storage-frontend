@@ -1,8 +1,8 @@
 'use client'
 
 import { LuSearch } from "react-icons/lu";
-import { BsBoxSeam } from "react-icons/bs";
-import { MdOutlineAddBox } from "react-icons/md";
+import { BsBoxSeam, BsHouse } from "react-icons/bs";
+import { MdHome, MdOutlineAddBox } from "react-icons/md";
 import { RxPerson } from "react-icons/rx";
 
 import styles from "./navbar.module.css"
@@ -28,7 +28,7 @@ export default function Navbar() {
     return render ? (
         <nav className={styles.nav}>
 
-            <NavItem href={"/account"} icon={<RxPerson />} label={"Account"} />
+            <NavItem href={"/home"} icon={<MdHome />} label={"Home"} />
 
             <NavItem href={"/"} icon={<LuSearch />} label={"Search"} />
 

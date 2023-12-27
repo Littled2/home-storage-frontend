@@ -1,3 +1,19 @@
+.top {
+    display: flex;
+    justify-content: right;
+}
+
+.accountBtn {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+
+
 .btns {
     display: flex;
     gap: 12px;
@@ -21,4 +37,29 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+
+.layout {
+    grid-template-areas: "a a ";
+}
+
+.number {
+    background-color: rgb(195, 232, 255);
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.locations {
+    background-color: rgb(195, 232, 255);
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+
+.locationsInner {
+    display: flex;
+    gap: 16px;
 }

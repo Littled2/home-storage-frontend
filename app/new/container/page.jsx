@@ -1,7 +1,7 @@
 import { GoBackLink } from "@/components/GoBackLink";
 import { NewContainer } from "@/forms/NewContainer";
 
-export default function NewContainerPage() {
+export default function NewContainerPage({ searchParams }) {
     return (
         <section>
 
@@ -13,7 +13,7 @@ export default function NewContainerPage() {
 
             <br />
 
-            <NewContainer />
+            <NewContainer place={searchParams?.place} />
 
         </section>
     )

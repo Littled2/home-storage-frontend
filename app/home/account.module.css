@@ -1,0 +1,88 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 38px;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 44px;
+    padding-bottom: 24px;
+}
+
+.account {
+    display: flex;
+    justify-content: right;
+    padding-bottom: 24px;
+}
+
+.accountBtn {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.statsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: rgb(244, 244, 244);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.statsInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 24px 0;
+    text-align: center;
+}
+
+
+
+
+.locations {
+    /* background-color: rgb(195, 232, 255);
+    border-radius: 8px; */
+    padding: 14px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+
+.locationsInner {
+    display: flex;
+    gap: 16px;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+    gap: 14px;
+}
+
+.options > a {
+    background-color: rgb(244, 244, 244);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 6px;
+    color: inherit;
+}

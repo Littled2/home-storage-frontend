@@ -1,0 +1,10 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.scanner {
+    padding: 0 24px;
+}

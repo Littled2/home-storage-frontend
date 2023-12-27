@@ -71,3 +71,24 @@
     font-size: 0.9rem;
     flex: 1;
 }
+
+.img {
+    height: 6rem;
+
+}
+
+.img > img {
+    height: 100%;
+    border-radius: 8px;
+}
+
+.itemInner {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.itemInner > img {
+    border-radius: 4px;
+    height: 2rem;
+}

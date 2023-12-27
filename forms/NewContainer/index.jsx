@@ -6,7 +6,7 @@ import { usePocket } from "@/contexts/PocketContext"
 import { LocationSelect } from "@/components/LocationSelect"
 import { useRouter } from "next/navigation"
 
-export function NewContainer() {
+export function NewContainer({ place }) {
 
     const nameRef = useRef()
     const descRef = useRef()
@@ -23,6 +23,8 @@ export function NewContainer() {
     useEffect(() => {
 
         if(!user) return
+
+        if(place) return
 
         console.log(`gid = '${user.gid}' && location = '${user.activeLocation}'`)
 
@@ -44,7 +46,7 @@ export function NewContainer() {
 
 
         data.append("gid", user.gid)
-        data.append("place", placeSelectRef.current.value)
+        data.append("place", place ? place : placeSelectRef.current.value)
 
         console.log(data)
         data.forEach((v,k) => console.log(v, k))
@@ -63,20 +65,29 @@ export function NewContainer() {
 
                 <br />
 
-                <div className={styles.formItem}>
-                    <label>Where is the container?</label>
-                    <select ref={placeSelectRef}>
-                        {
-                            places.map(p => {
-                                return (
-                                    <option key={p.id} value={p.id}>{p.name}</option>
-                                )
-                            })
-                        }
-                    </select>
-                </div>
+                {
+                    !place ? (
+                        <>
+                            <div className={styles.formItem}>
+                                <label>Where is the container?</label>
+                                <select ref={placeSelectRef}>
+                                    {
+                                        places.map(p => {
+                                            return (
+                                                <option key={p.id} value={p.id}>{p.name}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                            </div>
 
-                <br />
+                            <br />
+
+                        </>
+                    ) : (
+                        <></>
+                    )
+                }
 
                 <br />
     

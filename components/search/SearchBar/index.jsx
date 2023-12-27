@@ -1,3 +1,4 @@
+import { BsSearch } from "react-icons/bs"
 import styles from "./search.module.css"
 import { LuSearch } from "react-icons/lu"
 

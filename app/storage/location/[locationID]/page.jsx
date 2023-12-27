@@ -2,6 +2,7 @@
 
 import { ContainersView } from "@/components/ContainersView"
 import { EditText } from "@/components/EditText"
+import { PlacesView } from "@/components/PlacesView"
 import { usePocket } from "@/contexts/PocketContext"
 import { useEffect, useState } from "react"
 
@@ -34,7 +35,7 @@ export default function LocationView({ params }) {
 
             <div>
 
-                <ContainersView />
+                <PlacesView locationID={params.locationID} capped={false} />
 
             </div>
 
