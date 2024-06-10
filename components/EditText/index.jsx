@@ -30,7 +30,7 @@ export function EditText({ text, collection, id, field }) {
 
     }, [value])
 
-    useOutsideAlerter(el, setCounter)
+    // useOutsideAlerter(el, () => setCounter(c => c + 1))
 
     useEffect(() => {
         if(edit) {
@@ -46,7 +46,7 @@ export function EditText({ text, collection, id, field }) {
         <span ref={el} onClick={() => setEdit(true)}>
             {
                 edit ? (
-                    <input className={styles.input} type="text" ref={inputEl} value={value} onChange={(e) => setValue(e.target.value)} />
+                    <input className={styles.input} type="text" onBlur={triggerSave} ref={inputEl} value={value} onChange={(e) => setValue(e.target.value)} />
                 ) : (
                     <span>{value}</span>
                 )

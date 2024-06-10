@@ -9,6 +9,7 @@ import styles from "./navbar.module.css"
 import { NavItem } from "./Item";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { IoMdQrScanner } from "react-icons/io";
 
 export default function Navbar() {
 
@@ -28,13 +29,15 @@ export default function Navbar() {
     return render ? (
         <nav className={styles.nav}>
 
-            <NavItem href={"/home"} icon={<MdHome />} label={"Home"} />
+            {/* <NavItem href={"/home"} icon={<MdHome />} label={"Home"} /> */}
 
             <NavItem href={"/"} icon={<LuSearch />} label={"Search"} />
 
             <NavItem href={"/storage"} icon={<BsBoxSeam />} label={"Storage"} />
 
             <NavItem href={"/new"} icon={<MdOutlineAddBox />} label={"New"} />
+
+            <NavItem href={"/scan"} icon={<IoMdQrScanner />} label={"Scan"} />
 
         </nav>
     ) : (

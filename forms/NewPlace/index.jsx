@@ -43,7 +43,7 @@ export function NewPlace() {
 
             <div className={styles.formItem}>
                 <label>Name</label>
-                <input type="text" required placeholder="Eg. 48 The Road" ref={nameInpt} />
+                <input type="text" required placeholder="Eg. Garage" ref={nameInpt} />
             </div>
 
             <div className={styles.submitCont}>

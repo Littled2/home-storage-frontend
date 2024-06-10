@@ -2,6 +2,8 @@ import styles from "./PlacesView.module.css"
 import { Place } from "./Place";
 import { useEffect, useState } from "react";
 import { usePocket } from "@/contexts/PocketContext";
+import Link from "next/link";
+import { BsPlus } from "react-icons/bs";
 
 export function PlacesView({ locationID, capped }) {
 
@@ -25,6 +27,10 @@ export function PlacesView({ locationID, capped }) {
 
             <div className={styles.top}>
                 <h3>Rooms</h3>
+                <Link className={styles.topBtn} href={{ pathname: "/new/room", query: { place: "" } }}>
+                    <span>Add room</span>
+                    <BsPlus />
+                </Link>
             </div>
 
             <div className={styles.containers}>

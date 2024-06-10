@@ -5,6 +5,11 @@
 }
 
 .search {
-    padding-top: 14px;
-    padding-bottom: 14px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: white;
+    position: sticky;
+    border-bottom: 1px solid rgb(227, 227, 227);
+    top: 0;
+    z-index: 1;
 }

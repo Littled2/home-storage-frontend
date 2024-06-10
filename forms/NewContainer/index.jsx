@@ -48,6 +48,10 @@ export function NewContainer({ place }) {
         data.append("gid", user.gid)
         data.append("place", place ? place : placeSelectRef.current.value)
 
+        if(imgRef.current.files.length > 0) {
+            data.append("image", imgRef.current.files[0])
+        }
+
         console.log(data)
         data.forEach((v,k) => console.log(v, k))
 
@@ -70,7 +74,7 @@ export function NewContainer({ place }) {
                         <>
                             <div className={styles.formItem}>
                                 <label>Where is the container?</label>
-                                <select ref={placeSelectRef}>
+                                <select required ref={placeSelectRef}>
                                     {
                                         places.map(p => {
                                             return (
@@ -93,12 +97,17 @@ export function NewContainer({ place }) {
     
                 <div className={styles.formItem}>
                     <label>Container Name</label>
-                    <input type="text" ref={nameRef} />
+                    <input type="text" ref={nameRef} required />
                 </div>
     
                 <div className={styles.formItem}>
                     <label>Description <small>(Optional)</small></label>
                     <textarea ref={descRef}></textarea>
+                </div>
+
+                <div className={styles.formItem}>
+                    <label>Image</label>
+                    <input type="file" ref={imgRef} />
                 </div>
     
                 <div className={styles.submitCont}>

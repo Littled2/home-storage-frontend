@@ -10,6 +10,10 @@ import { AuthCheck } from "@/components/AuthCheck";
 
 export default function HomeLayout({ children }) {
 
+    const pathname = usePathname()
+
+    const { user } = usePocket() 
+
     return (
         <html>
             <body>
@@ -17,7 +21,7 @@ export default function HomeLayout({ children }) {
                     <AuthCheck />
                     <main className={styles.appWrapper}>
 
-                        <section className={styles.content}>
+                        <section className={pathname !== "/" ? styles.content : styles.searchContent}>
                             {children}
                         </section>
 

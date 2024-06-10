@@ -14,6 +14,8 @@ export function Results({ query }) {
 
     useEffect(() => {
 
+        if(!user) return
+
         pb.collection("items").getList(1, 25, {
             filter: `gid = '${user.gid}' && name ~ '%${query}%'`,
             expand: "container,places(container.place)"
@@ -23,14 +25,10 @@ export function Results({ query }) {
             setResults(res.items)
         })
 
-    }, [query])
+    }, [query, user])
 
     return (
         <section>
-
-            <div className={styles.top}>
-                <p>Results for: <b>{query}</b></p>
-            </div>
 
             <div className={styles.results}>
                 {

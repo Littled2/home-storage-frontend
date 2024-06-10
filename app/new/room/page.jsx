@@ -9,7 +9,7 @@ export default function NewContainerPage() {
 
             <br />
 
-            <h2>New Place.</h2>
+            <h2>New Room.</h2>
 
             <br />
 

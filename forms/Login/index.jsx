@@ -24,7 +24,7 @@ export function Login() {
         login(emailInput.current.value, passwordInput.current.value)
         .then(e => {
             console.log(e)
-            router.push("/")
+            router.push("/storage")
         })
         .catch(err => {
             setError(true)

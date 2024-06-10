@@ -5,7 +5,7 @@ import { EditTextLong } from "@/components/EditTextLong"
 import { ItemsView } from "@/components/ItemsView/page"
 import { usePocket } from "@/contexts/PocketContext"
 import { useEffect, useState } from "react"
-import { BsBox, BsHouse, BsQrCode } from "react-icons/bs"
+import { BsArrowDown, BsArrowUp, BsBox, BsHouse, BsQrCode } from "react-icons/bs"
 
 import styles from "./page.module.css"
 import { MdHome, MdRoom } from "react-icons/md"
@@ -16,6 +16,8 @@ import { PlaceLink } from "@/components/links/Place"
 export default function ContainerView({ params }) {
 
     const { pb } = usePocket()
+
+    const [ descOpen, setDescOpen ] = useState(false)
 
     const [ container, setContainer ] = useState()
     const [ place , setPlace ] = useState()
@@ -37,23 +39,20 @@ export default function ContainerView({ params }) {
     }, [])
 
     return (
-        <section>
+        <section className={styles.page}>
 
             <div className={styles.top}>
-                <div className={styles.heading}>
-                    {/* <BsBox /> */}
-                    <div>
-                        <small>Container:</small>
-                        <h1>
-                            {
-                                container ? (
-                                    <EditText text={container.name} collection={"containers"} id={container.id} field={"name"} />
-                                ) : (
-                                    <></>
-                                )
-                            }
-                        </h1>
-                    </div>
+                <div>
+                    <h1 className={styles.heading}>
+                        <BsBox />
+                        {
+                            container ? (
+                                <EditText text={container.name} collection={"containers"} id={container.id} field={"name"} />
+                            ) : (
+                                <></>
+                            )
+                        }
+                    </h1>
                 </div>
 
                 <Link href={{ pathname:`/storage/container/${params.containerID}/sticker`, query: { name: container?.name }}}>
@@ -63,27 +62,49 @@ export default function ContainerView({ params }) {
 
             <div className={styles.locationInfoCont}>
                 <LocationLink href={`/storage/location/${location?.id}`}>{location?.name}</LocationLink>
+                <span>|</span>
                 <PlaceLink href={`/storage/place/${place?.id}`}>{place?.name}</PlaceLink>
+            </div>
+
+            <br />
+
+            <div>
+                <img style={{width: "100%", borderRadius: "0.5rem" }} src={pb.files.getUrl(container, container?.image)} alt="Container photo" />
             </div>
 
 
             <br />
 
-            <p>
-                {
-                    container ? (
-                        <EditTextLong text={container.description} collection={"containers"} id={container.id} field={"description"} />
-                    ) : (
-                        <></>
-                    )
-                }
-            </p>
+            <div className={styles.desc}>
+                <div className={styles.descTop} onClick={() => setDescOpen(o => !o)}>
+                    <h4>Description</h4>
+                    {
+                        descOpen ? (
+                            <BsArrowUp />
+                        ) : (
+                            <BsArrowDown />
+                        )
+                    }
+                </div>
+                    {
+                        descOpen ? (
+                            <div className={styles.descBtm}>
+                                <p>
+                                    {
+                                        container ? (
+                                            <EditTextLong text={container.description} collection={"containers"} id={container.id} field={"description"} />
+                                        ) : (
+                                            <></>
+                                        )
+                                    }
+                                </p>
+                            </div>
+                        ) : (
+                            <></>
+                        )
+                    }
+            </div>
 
-            <br />
-
-            <hr />
-
-            <br />
 
             {
                 container ? (

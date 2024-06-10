@@ -3,12 +3,15 @@
 import { QrScanner } from "@yudiel/react-qr-scanner";
 import styles from "./page.module.css"
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 
 
 export default function ScanPage() {
 
     const router = useRouter()
+
+    const [ err, setErr ] = useState(false)
 
     return (
         <section className={styles.page}>
@@ -19,14 +22,29 @@ export default function ScanPage() {
 
             <div className={styles.scanner}>
                 <QrScanner
-                    onDecode={(res) => router.push(`/storage/container/${res}`)}
+                    onDecode={(res) => {
+                        setErr(false)
+                        if(res.startsWith("container_")) {
+                            router.push(`/storage/container/${res.split("_")[1]}`)
+                        } else {
+                            setErr(true)
+                        }
+                    }}
                     onError={(error) => console.log(error?.message)}
                     scanDelay={300}
                     videoId="video"
                 />
 
                 <video id="video"></video>
-            </div>            
+            </div>
+
+            {
+                err ? (
+                    <p style={{ color: "red" }}>Invalid QR code!</p>
+                ) : (
+                    <></>
+                )
+            }          
 
         </section>
     )

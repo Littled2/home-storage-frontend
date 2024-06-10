@@ -2,11 +2,11 @@
     border-radius: 6px;
     color: inherit;
     border-bottom: 0.5px solid rgb(221, 221, 221);
-    padding: 6px;
+    padding: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 4px;
+    gap: 12px;
 }
 
 .item:hover {
@@ -19,7 +19,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
 .inner > img {
@@ -27,14 +27,21 @@
     height: 3rem;
 }
 
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
 .container {
     display: flex;
     gap: 0.5em;
     align-items: center;
     border-radius: 1000px;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
     padding: 6px 12px;
     background-color: rgb(242, 242, 242);
     color: grey;
     font-weight: 400;
+    width: max-content;
 }

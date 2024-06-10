@@ -8,6 +8,8 @@ import styles from "./place.module.css"
 import { BsDoorClosed } from "react-icons/bs"
 import { RxHome } from "react-icons/rx"
 import { EditText } from "@/components/EditText"
+import { LocationLink } from "@/components/links/Location"
+import { PlaceLink } from "@/components/links/Place"
 
 export default function LocationView({ params }) {
 
@@ -19,6 +21,10 @@ export default function LocationView({ params }) {
         pb.collection("places").getOne(params.placeID, { expand: "location" })
         .then(p => setPlace(p))
     }, [])
+
+    useEffect(() => {
+        console.log(place)
+    }, [place])
 
     return (
         <section>
@@ -36,10 +42,9 @@ export default function LocationView({ params }) {
 
             <br />
 
-            <p className={styles.location}>
-                <RxHome />
-                <span>{place?.expand?.location?.name}</span>
-            </p>
+            <div className={styles.locationInfoCont}>
+                <LocationLink href={`/storage/location/${place?.expand?.location?.id}`}>{place?.expand?.location?.name}</LocationLink>
+            </div>
 
             <br />
 

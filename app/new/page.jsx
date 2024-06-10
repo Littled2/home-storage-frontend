@@ -6,6 +6,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { SelectActiveLocation } from "@/components/SelectActiveLocation";
 import { useEffect, useState } from "react";
 import { usePocket } from "@/contexts/PocketContext";
+import { LocationSelect } from "@/components/LocationSelect";
 
 export default function NewPage() {
 
@@ -25,6 +26,8 @@ export default function NewPage() {
     return (
         <section className={styles.page}>
 
+            <LocationSelect />
+
             <h2 className="page-heading">Add something to {location?.name}</h2>
 
             {/* <SelectActiveLocation /> */}
@@ -36,7 +39,7 @@ export default function NewPage() {
                     <FaArrowRight />
                 </Link>
 
-                <Link href={"/new/place"}>
+                <Link href={"/new/room"}>
                     <span>Room</span>
                     <FaArrowRight />
                 </Link>

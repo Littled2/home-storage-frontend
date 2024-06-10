@@ -17,12 +17,16 @@ export function ItemResult({ item, name, containerID, containerName, image }) {
                         <img src={'https://www.svgrepo.com/show/508699/landscape-placeholder.svg'} style={{opacity:"0.2"}} />
                     )
                 }
-                <p>{name}</p>
+
+                <div className={styles.info}>
+                    <p>{name}</p>
+
+                    <p className={styles.container}>
+                        <BsBox />
+                        <span>{containerName}</span>
+                    </p>
+                </div>
             </div>
-            <p className={styles.container}>
-                <BsBox />
-                <span>{containerName}</span>
-            </p>
         </Link>
     )
 }
