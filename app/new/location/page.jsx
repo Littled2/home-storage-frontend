@@ -5,7 +5,7 @@ export default function NewContainerPage() {
     return (
         <section>
 
-            {/* <GoBackLink href={"/new"} /> */}
+            <GoBackLink href={"/locations"} />
 
             <br />
 

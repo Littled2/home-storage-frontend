@@ -2,7 +2,7 @@
 
 import { ContainersView } from "@/components/ContainersView"
 import { EditText } from "@/components/EditText"
-import { PlacesView } from "@/components/PlacesView"
+// import { ItemsView } from "@/components/ItemsView"
 import { usePocket } from "@/contexts/PocketContext"
 import { useEffect, useState } from "react"
 
@@ -15,7 +15,7 @@ export default function LocationView({ params }) {
     useEffect(() => {
 
         pb.collection("locations").getOne(params.locationID)
-        .then(loc => setLocation(location))
+        .then(loc => setLocation(loc))
 
     }, [])
 
@@ -35,7 +35,7 @@ export default function LocationView({ params }) {
 
             <div>
 
-                <PlacesView locationID={params.locationID} capped={false} />
+                {/* <ItemsView locationID={params.locationID} capped={false} /> */}
 
             </div>
 

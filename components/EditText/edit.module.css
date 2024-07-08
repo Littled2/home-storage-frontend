@@ -4,4 +4,18 @@
     font: inherit;
     border: none;
     background-color: transparent;
+    max-width: max-content;
+    padding: inherit;
+    margin: inherit;
+    color: inherit;
+    min-width: 3rem;
+}
+
+.input:hover,
+.input:focus {
+    outline: 0.8px gray dashed;
+}
+
+.text {
+    min-width: 3rem; 
 }

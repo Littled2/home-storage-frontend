@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap');
 
+:root {
+    --bg-colour: rgb(243 241 239);
+    --primary: rgb(15 19 34);
+    --secondary: rgb(217 188 168);
+    --secondary-lighter: rgba(217, 188, 168, 0.8);
+    --tertiary: rgb(149 207 217);
+    --accent: rgb(254 76 36);
+    --red: rgb(255, 108, 108);
+    --padding-thick: 2.4rem;
+    --padding-thin: 1.6rem;
+
+    --mobile-navbar-height: 64px;
+    --main-padding: var(--padding-thick);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -10,37 +25,18 @@ html {
 
 body {
     margin: 0;
-}
-
-.page-heading {
-    font-size: 2rem;
-}
-
-.icon-heading {
+    background-color: white;
     display: flex;
-    align-items: center;
-    gap: 0.5em;
 }
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
-button {
-    background-color: transparent;
-    border: none;
-    font-family: inherit;
-    cursor: pointer;
-}
-
-h1 {
-    font-size: 2rem;
-}
-
-h2 {
-    font-size: 1.6rem;
-}
-
-a {
-    text-decoration: none;
+@media screen and (max-width: 1000px) {
+    body {
+        flex-direction: column-reverse;
+        height: 100vh;
+        --main-padding: 16px;
+    }
 }

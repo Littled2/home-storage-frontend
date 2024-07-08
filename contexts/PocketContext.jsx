@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 
 // const BASE_URL = "http://127.0.0.1:8090";
 const BASE_URL = "http://localhost:8090";
-// const BASE_URL = "http://192.160.0.56:8090";
+// const BASE_URL = "http://192.168.1.169:8090";
 // const BASE_URL = "http://192.168.1.196:8090";
 // const BASE_URL = "http://192.168.43.9:8090"
 
@@ -32,26 +32,37 @@ export const PocketProvider = ({ children }) => {
 
     const pb = useMemo(() => new PocketBase(BASE_URL), [])
 
-    const { router } = useRouter()
+    const router = useRouter()
     
     const [token, setToken] = useState(pb.authStore.token)
     const [user, setUser] = useState(pb.authStore.model)
 
 
     useEffect(() => {
+      
       return pb.authStore.onChange((token, model) => {
         console.log({token,model})
         setToken(token)
         setUser(model)
       })
+
+    }, [])
+
+    useEffect(() => {
+      pb.collection("users").subscribe(user.id, e => {
+        console.log("User record changed", user)
+        setUser(e.record)
+      })
+
+      return () => pb.collection("users").unsubscribe()
     }, [])
 
 
 
-    const register = useCallback(async (email, password) => {
+    const register = useCallback(async (email, password, firstName, lastName) => {
         return await pb
         .collection("users")
-        .create({ email, password, passwordConfirm: password })
+        .create({ email, password, passwordConfirm: password, firstName, lastName })
     }, [])
 
     const login = useCallback(async (email, password) => {
@@ -60,7 +71,7 @@ export const PocketProvider = ({ children }) => {
 
     const logout = useCallback(() => {
         pb.authStore.clear()
-        router.push("/login")
+        router.replace("/login")
     }, [])
 
 

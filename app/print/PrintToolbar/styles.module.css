@@ -1,0 +1,63 @@
+.toolbar {
+    display: flex;
+    gap: var(--padding-thin);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-thin);
+}
+
+.toolbar > * {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    border-radius: 1rem;
+    padding: 1rem 1.6rem;
+}
+
+.select {
+    flex: 1;
+    border: none;
+    font-size: inherit;
+}
+
+.settings {
+    display: flex;
+    gap: var(--padding-thin);
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.open {
+    outline: 1px solid var(--accent);
+    background-color: rgb(246, 246, 246);
+}
+
+.settings:hover {
+    background-color: rgb(246, 246, 246);
+}
+
+.settingsWrapper {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    border-radius: 1rem;
+    padding: 1rem 1.6rem;
+}
+
+.printBtn {
+    border: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background-color: var(--primary);
+    color: white;
+    cursor: pointer;
+}
+
+@media print {
+    .wrapper {
+        display: none;
+    }
+}

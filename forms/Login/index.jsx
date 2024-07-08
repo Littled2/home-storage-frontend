@@ -4,11 +4,12 @@ import { usePocket } from "@/contexts/PocketContext"
 import styles from "../forms.module.css"
 import { useRef, useState } from "react"
 import { useRouter } from "next/navigation"
+import { TextInput } from "@/components/TextInput"
 
 export function Login() {
 
-    const emailInput = useRef()
-    const passwordInput = useRef()
+    const [ eml, setEml ] = useState('')
+    const [ pswd, setPswd ] = useState('')
 
     const [error, setError] = useState(null)
 
@@ -19,17 +20,15 @@ export function Login() {
     function submit(e) {
         e.preventDefault()
 
-        console.log(emailInput.current.value, passwordInput.current.value)
-
-        login(emailInput.current.value, passwordInput.current.value)
+        login(eml, pswd)
         .then(e => {
             console.log(e)
-            router.push("/storage")
+            router.push("/")
         })
         .catch(err => {
             setError(true)
         })
-
+        
     }
 
     return (
@@ -37,12 +36,12 @@ export function Login() {
 
             <div className={styles.formItem}>
                 <label>Email</label>
-                <input type="text" ref={emailInput} />
+                <TextInput value={eml} setValue={setEml} />
             </div>
 
             <div className={styles.formItem}>
                 <label>Password</label>
-                <input type="password" ref={passwordInput} />
+                <TextInput value={pswd} setValue={setPswd} />
             </div>
 
             {

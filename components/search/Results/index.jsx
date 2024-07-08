@@ -5,6 +5,7 @@ import { Card } from "./Card"
 import styles from "./results.module.css"
 import { usePocket } from "@/contexts/PocketContext"
 import { ItemResult } from "./Item"
+import { ItemCard } from "@/components/StorageView/ItemCard"
 
 export function Results({ query }) {
 
@@ -16,9 +17,12 @@ export function Results({ query }) {
 
         if(!user) return
 
+        setResults([])
+
+        if(query.length === 0) return
+
         pb.collection("items").getList(1, 25, {
-            filter: `gid = '${user.gid}' && name ~ '%${query}%'`,
-            expand: "container,places(container.place)"
+            filter: `name ~ '%${query}%' || description ~ '%${query}%'`
         })
         .then(res => {
             console.log(res.items)
@@ -32,9 +36,9 @@ export function Results({ query }) {
 
             <div className={styles.results}>
                 {
-                    results.map(res => {
+                    results.map((item, i) => {
                         return (
-                            <ItemResult item={res} image={res?.image} name={res.name} containerName={res.expand.container.name} containerID={res.container} />
+                            <ItemCard item={item} key={i} />
                         )
                     })
                 }

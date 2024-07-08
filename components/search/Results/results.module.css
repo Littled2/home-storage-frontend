@@ -12,7 +12,9 @@
 
 
 .results {
+    padding-top: var(--padding-thin);
     display: flex;
     flex-direction: column;
+    gap: 12px;
 }
 

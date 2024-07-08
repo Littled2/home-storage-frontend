@@ -1,0 +1,37 @@
+.fileInput {
+    border-radius: 4px;
+    border: 1px grey dashed;
+    background-color: white;
+    padding: 2rem;
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+.fileInput h4,
+.fileInput p {
+    margin: 0;
+}
+
+.fileInput input {
+    display: none;
+}
+
+.filePreview {
+    padding-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.fileInputInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.fileIcon {
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+}

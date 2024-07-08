@@ -1,0 +1,54 @@
+.outerWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    background-color: var(--secondary);
+    padding: var(--padding-thin);
+    border-radius: 1rem;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.wrapper a:hover {
+    text-decoration: underline;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    color: inherit;
+    font-size: 0.8rem;
+}
+
+.selectLocation {
+    /* flex: 1; */
+    padding: 8px;
+    font-size: 1.2rem;
+    font-family: inherit;
+    background-color: transparent;
+    width: min-content;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: none;
+    border-radius: 1rem;
+}
+
+.selectLocation:focus {
+    outline: 2px solid var(--accent);
+}
+
+@media screen and (max-width: 1000px) {
+    .wrapper {
+        font-size: 0.rem;
+    }
+    .selectLocation {
+        font-size: 0.9rem;
+    }
+}

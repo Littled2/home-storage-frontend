@@ -5,11 +5,15 @@ export default function LoginPage() {
     return (
         <section className={styles.page}>
 
-            <h1>Login</h1>
-            
-            <br />
+            <div className={styles.main}>
+                <h1>Login</h1>
+                
+                <br />
 
-            <Login />
+                <Login />
+            </div>
+            
+            <p class="login-lbl">Need an account? <a href="/create-account">Create one.</a></p>
 
         </section>
     )

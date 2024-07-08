@@ -2,32 +2,35 @@
 
 import { PocketProvider, usePocket } from "@/contexts/PocketContext";
 import styles from "./layout.module.css"
-import Navbar from "@/components/layout/Navbar";
+import SideBar from "@/components/layout/SideBar";
 import "./globals.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AuthCheck } from "@/components/AuthCheck";
+import { MdMenu } from "react-icons/md";
 
 export default function HomeLayout({ children }) {
 
     const pathname = usePathname()
 
-    const { user } = usePocket() 
+    const { user } = usePocket()
+
+    const [ mainStyles, setMainStyles ] = useState({})
+
 
     return (
         <html>
             <body>
                 <PocketProvider>
-                    <AuthCheck />
-                    <main className={styles.appWrapper}>
+                        <AuthCheck>
 
-                        <section className={pathname !== "/" ? styles.content : styles.searchContent}>
-                            {children}
-                        </section>
+                            <SideBar />
 
-                        <Navbar />
+                            <main className={[ styles.main, pathname === "/" ? styles.mobileMain : "" ].join(" ")} style={mainStyles}>
+                                {children}
+                            </main>
 
-                    </main>
+                        </AuthCheck>
                 </PocketProvider>
             </body>
         </html>

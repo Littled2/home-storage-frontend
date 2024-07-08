@@ -1,33 +1,39 @@
 'use client'
 
-import styles from "./homepage.module.css"
+import { LocationSelect } from "@/components/LocationSelect"
+import styles from "./storage.module.css"
+import { ContainersView } from "@/components/ContainersView"
+import { PlacesView } from "@/components/PlacesView"
+import { usePocket } from "@/contexts/PocketContext"
+import Link from "next/link"
+import { BsPlus, BsPrinter } from "react-icons/bs"
+import { StorageToolbar } from "../components/StorageToolbar"
+import { StorageView } from "@/components/StorageView"
+import { useState } from "react"
 
-import { Results } from "@/components/search/Results";
-import { SearchBar } from "@/components/search/SearchBar";
-import { useState } from "react";
+export default function StoragePage() {
 
-export default function Homepage() {
+    const { user } = usePocket()
 
-    const [ query, setQuery ] = useState('')
+    const [ query, setQuery ] = useState("")
+    const [ location, setLocation ] = useState()
 
     return (
-        <div>
+        <section className={styles.page}>
 
-            <div className={styles.hero}>
+            {/* <h1 className={styles.mobileHeading}>Everything in your storage</h1> */}
 
-                <h1>Find Something.</h1>
+            <StorageToolbar query={query} setQuery={setQuery} setLocation={setLocation} />
 
-            </div>
+            <StorageView location={location} query={query} />
 
-            <div className={styles.search}>
+            <Link href={"/new/item"} className={styles.newItemBtn}>
+                <img src="/add.png" />
+                <span>Add Item</span>
+            </Link>
 
-                <SearchBar query={query} setQuery={setQuery} />
+            {/* <Link href={"/print-labels/" + user?.activeLocation}><BsPrinter /> Print container labels</Link> */}
 
-            </div>
-            
-
-            <Results query={query} />
-
-        </div>
+        </section>
     )
 }

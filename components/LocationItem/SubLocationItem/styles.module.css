@@ -1,0 +1,26 @@
+.subLocation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(75, 75, 75);
+    font-size: 1em;
+    gap: 6px;
+    border-radius: 0.5rem;
+    border: 1.2px solid rgba(255, 246, 240, 0.4);
+    padding: 8px;
+    width: min-content;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    opacity: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.subLocation:focus-within > .btn,
+.subLocation:hover > .btn {
+    opacity: 1;
+}

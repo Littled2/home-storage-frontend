@@ -46,13 +46,14 @@ export function EditTextLong({ text, collection, id, field }) {
 
     return (
         <span ref={el} onClick={() => setEdit(true)}>
-            {
+            <ReactTextareaAutosize placeholder="Add a note about the item/contents here" className={styles.input} ref={inputEl} value={value} onChange={(e) => setValue(e.target.value)} />
+            {/* {
                 edit ? (
-                    <ReactTextareaAutosize className={styles.input} ref={inputEl} value={value} onChange={(e) => setValue(e.target.value)} />
+                    <ReactTextareaAutosize placeholder="Add a note about the item/contents here" className={styles.input} ref={inputEl} value={value} onChange={(e) => setValue(e.target.value)} />
                 ) : (
                     <span>{value}</span>
                 )
-            }
+            } */}
         </span>
     )
 }

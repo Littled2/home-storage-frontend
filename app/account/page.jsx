@@ -18,32 +18,20 @@ export default function AccountPage() {
     const [ itemsCount, setItemsCount ] = useState(0)
     const [ containersCount, setContainersCount ] = useState(0)
 
-
-    useEffect(() => {
-
-        if(!user) return
-
-        pb.collection("groups").getOne(user.gid)
-        .then(doc => setGroup(doc))
-
-        pb.collection("items_count").getOne(user.gid)
-        .then(doc => setItemsCount(doc.count))
-
-        pb.collection("containers_count").getOne(user.gid)
-        .then(doc => setContainersCount(doc.count))
-
-
-    }, [user])
-
     return (
         <section className={styles.page}>
 
             <h1>Your Account.</h1>
-            <h3>Logged in as {user?.name}</h3>
+            <h3>Logged in as {user?.firstName}</h3>
 
             <br />
 
             <div className={styles.btns}>
+
+                <Link href={"/account/change-name"}>
+                    <span>Change Name</span>
+                    <FaArrowRight />
+                </Link>
 
                 <Link href={"/account/change-password"}>
                     <span>Change Password</span>

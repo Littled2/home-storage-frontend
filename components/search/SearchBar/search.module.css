@@ -1,7 +1,7 @@
 .cont {
     display: flex;
     gap: 16px;
-    background-color: rgb(240, 240, 240);
+    background-color: white;
     align-items: center;
     border-radius: 12px;
     color: rgb(44, 44, 44);
@@ -10,14 +10,11 @@
 }
 
 .inpt {
-    padding: 16px 0;
-    font-size: 1.2rem;
-    font-weight: 400;
-    font-family: inherit;
-    flex: 1;
-    color: rgb(44, 44, 44);
-    background-color: transparent;
     border: none;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    padding: 1rem 1.5rem;
 }
 
 .inpt:focus {

@@ -1,5 +1,5 @@
 import { GoBackLink } from "@/components/GoBackLink";
-import { NewContainer } from "@/forms/NewContainer";
+import { NewContainer } from "@/forms/NewItem";
 
 export default function NewContainerPage({ searchParams }) {
     return (

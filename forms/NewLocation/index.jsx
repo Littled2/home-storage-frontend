@@ -16,27 +16,26 @@ export function NewLocation() {
 
         pb.collection("locations").create({
             name: nameInpt.current.value,
-            gid: user.gid
+            user: user.id
         })
         .then((e) => {
-            router.push("/storage/location/" + e.id)
+            router.push("/locations")
         })
-        
+        .catch(e => console.error("Error creating locations", e))
+
     }
 
     return (
-        <div className={styles.form}>
+        <form className={styles.form} onSubmit={submit}>
 
             <div className={styles.formItem}>
                 <label>Name</label>
-                <input type="text" required placeholder="Eg. 48 The Road" ref={nameInpt} />
+                <input type="text" required placeholder="Eg. Garage" ref={nameInpt} />
             </div>
 
             <div className={styles.submitCont}>
-                <button type="submit" onClick={submit}>Create</button>
+                <button type="submit">Create</button>
             </div>
-        </div>
+        </form>
     )
 }
-
-// $ npm install --save dropzone

@@ -1,0 +1,91 @@
+.wrapper {
+    width: 18vw;
+    min-width: 280px;
+    max-width: 300px;
+    height: 100vh;
+    padding: var(--padding-thin);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.title > img {
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+}
+
+.sideItemsCont {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.logOutCont {
+    color: #9b9a9f;
+    cursor: pointer;
+}
+
+.logOutInner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.2s;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.logOutIcon {
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+}
+
+.logOutInner:hover {
+    background-color: var(--bg-colour);
+}
+
+
+@media screen and (max-width: 600px) {
+    .wrapper {
+        padding: 0;
+        flex-direction: row;
+        gap: 12px;
+        height: var(--mobile-navbar-height);
+        width: unset;
+        max-width: unset;
+        min-width: unset;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        width: 100vw;
+        z-index: 100;
+
+        padding-left: var(--main-padding);
+        padding-right: var(--main-padding);
+    }
+    .hideOnMobile {
+        display: none;   
+    }
+    .sideItemsCont {
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex: 1;
+    }
+}
+
+@media print {
+    .wrapper {
+        display: none;
+    }
+}

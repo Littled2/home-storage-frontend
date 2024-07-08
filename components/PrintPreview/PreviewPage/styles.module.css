@@ -1,0 +1,31 @@
+.page {
+    width: 8.5in;
+    height: 11.7in;
+
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 2px 2px;
+
+    margin: auto;
+    display: grid;
+
+    page-break-after: always;
+}
+
+.sticker {
+    outline: 1px dotted;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+@media print {
+    @page {
+        margin: 0;
+    }
+    .page {
+        margin: 0;
+        background-color: unset;
+        box-shadow: unset;
+    }
+    
+}

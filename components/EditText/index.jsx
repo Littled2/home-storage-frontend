@@ -44,13 +44,14 @@ export function EditText({ text, collection, id, field }) {
 
     return (
         <span ref={el} onClick={() => setEdit(true)}>
-            {
+            <input className={styles.input} style={{ width: value.length + 0.5 + "ch" }} type="text" onBlur={triggerSave} ref={inputEl} value={value} onChange={(e) => setValue(e.target.value)} />
+            {/* {
                 edit ? (
-                    <input className={styles.input} type="text" onBlur={triggerSave} ref={inputEl} value={value} onChange={(e) => setValue(e.target.value)} />
+                    <input className={styles.input} style={{ width: value.length + "ch" }} type="text" onBlur={triggerSave} ref={inputEl} value={value} onChange={(e) => setValue(e.target.value)} />
                 ) : (
-                    <span>{value}</span>
+                    <span className={styles.text}>{value}</span>
                 )
-            }
+            } */}
         </span>
     )
 }

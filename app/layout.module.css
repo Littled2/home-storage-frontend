@@ -1,38 +1,45 @@
-.appWrapper {
-    max-width: 600px;
-    margin: auto;
-    height: 100vh;
-    position: relative;
-}
-
-.content {
-    padding: 16px;
-    padding-top: 34px;
-    height: 100vh;
+.main {
+    flex: 1;
+    background-color: var(--bg-colour);
+    padding: var(--main-padding);
+    border-radius: 3rem;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
     overflow-y: auto;
-    overflow-x: hidden;
-    padding-bottom: 25vh;
-}
-
-.searchContent {
     height: 100vh;
-    padding: 16px;
-    padding-top: 0;
-    overflow-y: auto;
     overflow-x: hidden;
-    padding-bottom: 25vh;
 }
 
-@media screen and (min-width: 600px) {
-    .appWrapper {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: center;
-        max-width: unset;
-        gap: 18px;
+.mobileMenu > button {
+    font-size: 1.25rem;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .main {
+        border-radius: 0;
+        padding: 16px;
+        flex: 1;
+        /* height: calc(100vh - 48px); */
+        padding-bottom: calc(var(--mobile-navbar-height) + var(--main-padding));
     }
+    .mobileMenu {
+        display: flex;
+    }
+    .mobileMain {
+        padding-top: 0 !important;
+    }
+}
 
-    .content {
-        width: 800px;
+@media print {
+    .main {
+        border-radius: 0;
+        padding: 0;
+        background-color: white;
     }
 }

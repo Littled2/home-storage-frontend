@@ -1,0 +1,80 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-thick);
+}
+
+.heading {
+    font-size: 2.5rem;
+    color: rgb(70, 70, 70);
+    font-weight: 600;
+}
+
+.locationsWrapper {
+    display: flex;
+    gap: var(--padding-thin);
+    flex-wrap: wrap;
+}
+
+.newLocationBtn {
+    position: fixed;
+    right: var(--padding-thick);
+    bottom: var(--padding-thick);
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    color: inherit;
+    text-decoration: none;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.newLocationBtn:hover {
+    outline: 1px solid var(--accent);
+}
+
+.newLocationBtn > img {
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+}
+
+.nothingHere {
+    font-size: 0.75rem;
+    color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    margin: auto;
+    height: 100%;
+    min-height: 40vh;
+}
+
+.nothingHere a {
+    color: inherit;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .newLocationBtn {
+        bottom: calc(var(--mobile-navbar-height) + 12px);
+        right: var(--main-padding);
+        left: unset;
+        padding: 22px;
+    }
+    .newLocationBtn > span {
+        display: none;
+    }
+    .locationsWrapper {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+}
