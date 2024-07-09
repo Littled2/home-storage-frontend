@@ -1,3 +1,5 @@
+'use client'
+
 import { ChangeName } from "@/forms/ChangeName"
 
 export default function ChangeNamePage() {

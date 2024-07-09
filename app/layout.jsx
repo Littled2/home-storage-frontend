@@ -26,7 +26,7 @@ export default function HomeLayout({ children }) {
 
                             <SideBar />
 
-                            <main className={[ styles.main, pathname === "/" ? styles.mobileMain : "" ].join(" ")} style={mainStyles}>
+                            <main className={[ styles.main, pathname === "/" ? styles.mobileMain : pathname === "/new/item" ? styles.noPadding : "" ].join(" ")} style={mainStyles}>
                                 {children}
                             </main>
 

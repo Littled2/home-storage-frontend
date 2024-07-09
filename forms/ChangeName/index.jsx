@@ -19,7 +19,7 @@ export function ChangeName() {
 
         console.log(user.id)
 
-        pb.collection("users").update("qrjwbccpwutek4y", {
+        pb.collection("users").update(user.id, {
             firstName: fName.current.value,
             lastName: lName.current.value
         })
@@ -37,14 +37,14 @@ export function ChangeName() {
                     <div>
                         <label>First name</label>
                     </div>
-                    <input type="text" defaultValue={user.firstName} ref={fName} />
+                    <input type="text" defaultValue={user?.firstName} ref={fName} />
                 </div>
 
                 <div className={styles.formItem}>
                     <div>
                         <label>Last name</label>
                     </div>
-                    <input type="text" defaultValue={user.lastName} ref={lName} />
+                    <input type="text" defaultValue={user?.lastName} ref={lName} />
                 </div>
             </div>
 

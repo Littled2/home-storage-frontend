@@ -22,10 +22,11 @@
 
 .name {
     font-weight: 500;
-    background-color: rgb(28, 28, 28);
+    background-color: rgb(28, 28, 28) !important;
     width: 100%;
     padding: 4px;
     color: white;
+    print-color-adjust: exact !important;
 }
 
 .id {
@@ -46,4 +47,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media print {
+    .name {
+        color: black;
+    }
 }

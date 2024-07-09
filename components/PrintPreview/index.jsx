@@ -44,13 +44,9 @@ export function PrintPreview({ items, previewRef }) {
             pages.push(current_page)
         }
 
+        setPagesOfStickers(pages)        
 
-        setPagesOfStickers(pages)
-
-        console.log({user})
-        
-
-    }, [ items, JSON.stringify(user.printSettings) ])
+    }, [ items, JSON.stringify(user?.printSettings) ])
 
     return user ? (
         <section className={styles.wrapper}>
@@ -63,14 +59,14 @@ export function PrintPreview({ items, previewRef }) {
                 pagesOfStickers.map(items => {
                     return (
                         <PreviewPage
-                            marginTop={user.printSettings?.margin?.top}
-                            marginBottom={user.printSettings?.margin?.bottom}
-                            marginLeft={user.printSettings?.margin?.left}
-                            marginRight={user.printSettings?.margin?.right}
-                            colSpacing={user.printSettings?.colSpacing}
-                            rowSpacing={user.printSettings?.rowSpacing}
-                            numCols={user.printSettings?.numCols}
-                            numRows={user.printSettings?.numRows}
+                            marginTop={user?.printSettings?.margin?.top}
+                            marginBottom={user?.printSettings?.margin?.bottom}
+                            marginLeft={user?.printSettings?.margin?.left}
+                            marginRight={user?.printSettings?.margin?.right}
+                            colSpacing={user?.printSettings?.colSpacing}
+                            rowSpacing={user?.printSettings?.rowSpacing}
+                            numCols={user?.printSettings?.numCols}
+                            numRows={user?.printSettings?.numRows}
                             items={items}
                             previewRef={previewRef}
                         />

@@ -53,6 +53,8 @@ export default function SideBar() {
 
                 <NavItem onlyShowOnPlatform={"mobile"} href={"/scan"} icon={<IoMdQrScanner />} label={"Scan"} />
 
+                <NavItem onlyShowOnPlatform={"mobile"} href={"/new/item"} icon={<MdOutlineAddBox />} label={"Add"} />
+
                 <NavItem onlyShowOnPlatform={"desktop"} href={"/print"} icon={<BsPrinter />} label={"Print labels"} />
 
             </section>

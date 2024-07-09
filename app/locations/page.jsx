@@ -12,18 +12,42 @@ export default function LocationsPage() {
 
     const [ loading, setLoading ] = useState(true)
     const [ locations, setLocations ] = useState([])
+    const [ locationsInfo, setLocationsInfo ] = useState([])
 
 
     useEffect(() => {
 
         pb.collection("locations_info").getFullList()
+        .then(locsInfo => setLocationsInfo)
+
+        pb.collection("locations").getFullList()
         .then(locs => {
-            console.log({locs})
             setLoading(false)
             setLocations(locs)
         })
 
     }, [])
+
+    useEffect(() => {
+
+        if(!locationsInfo || locations.length < 0) {
+            return
+        }
+
+        let map = {}
+
+        locationsInfo.forEach(loc => map[loc.id] = loc.items)
+
+        setLocations(locs => {
+            return locs.map(loc => {
+                return {
+                    ...loc,
+                    items: map[loc.id]
+                }
+            })
+        })
+
+    }, [locationsInfo, locations])
 
 
     return (

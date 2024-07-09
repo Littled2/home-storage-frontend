@@ -31,12 +31,15 @@ export function PrintToolbar({ previewRef, selectedLocation, setSelectedLocation
 
     }, [])
 
-    const print = useCallback(() => {
+    const print = () => {
         const iframe = document.createElement("iframe")
-        iframe.contentDocument.body.style.margin = "0"
-        iframe.contentWindow.document.body.innerHTML = previewRef.current.innerHTML
-        iframe.contentWindow.print()
-    })
+        // iframe.style.display = "none"
+        document.body.appendChild(iframe)
+        iframe.contentDocument.write("<p>Hello</p>")
+        iframe.contentWindow.focus()
+        setTimeout(() => iframe.contentWindow.print(), 500)
+        
+    }
 
     return (
         <div className={styles.wrapper}>

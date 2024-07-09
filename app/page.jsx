@@ -27,7 +27,12 @@ export default function StoragePage() {
 
             <StorageView location={location} query={query} />
 
-            <Link href={"/new/item"} className={styles.newItemBtn}>
+            <Link href={"/new/item"} className={styles.newItemBtnMobile}>
+                <img src="/add.png" />
+                <span>Add Item</span>
+            </Link>
+
+            <Link href={"/new/item/desktop"} className={styles.newItemBtnDesktop}>
                 <img src="/add.png" />
                 <span>Add Item</span>
             </Link>
