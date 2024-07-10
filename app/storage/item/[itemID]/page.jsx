@@ -36,7 +36,7 @@ export default function ItemViewPage({ params }) {
         pb.collection('items').subscribe(params.itemID, e => {
             setItem(e.record)
             setLocation(e.record.expand?.location)
-            setSubLocationID(i?.sub_location)
+            setSubLocationID(e.record?.sub_location)
         }, {
             expand: "location,subLocation"
         })
