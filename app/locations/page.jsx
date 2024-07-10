@@ -14,6 +14,8 @@ export default function LocationsPage() {
     const [ locations, setLocations ] = useState([])
     const [ locationsInfo, setLocationsInfo ] = useState([])
 
+    const [ infoAdded, setInfoAdded ] = useState(false)
+
 
     useEffect(() => {
 
@@ -29,6 +31,8 @@ export default function LocationsPage() {
     }, [])
 
     useEffect(() => {
+
+        if(infoAdded) return
 
         if(!locationsInfo || locations.length < 0) {
             return
@@ -46,6 +50,8 @@ export default function LocationsPage() {
                 }
             })
         })
+
+        setInfoAdded(true)
 
     }, [locationsInfo, locations])
 

@@ -16,4 +16,8 @@
     .info {
         display: none;
     }
+
+    .wrapper {
+        gap: 0;
+    }
 }

@@ -43,14 +43,14 @@ export default function PrintLabels() {
     return (
         <div className={styles.wrapper}>
 
-            <PrintToolbar selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation} />
+            <PrintToolbar previewRef={prevRef} selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation} />
 
             {/* <button onClick={window.print} className={styles.printButton}>
                 <BsPrinter />
                 <span>Print all</span>
             </button> */}
 
-            <PrintPreview previewRef={prevRef} items={items} />
+            <PrintPreview previewRef={prevRef} items={items} setItems={setItems} />
 
             {/* <section className={styles.labels}>
                 {

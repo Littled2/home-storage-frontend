@@ -1,6 +1,6 @@
 .page {
     width: 8.5in;
-    height: 11.7in;
+    height: 297mm;
 
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 2px 2px;
@@ -8,7 +8,7 @@
     margin: auto;
     display: grid;
 
-    page-break-after: always;
+    /* page-break-after: always; */
 }
 
 .sticker {
@@ -16,6 +16,28 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+    position: relative;
+}
+
+.controls > button {
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 1000%;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+}
+
+.sticker:hover .controls > button {
+    display: flex;
 }
 
 @media print {
@@ -26,6 +48,13 @@
         margin: 0;
         background-color: unset;
         box-shadow: unset;
+        width: unset;
     }
-    
+    .sticker {
+        outline: none;
+        position: unset;
+    }
+    .controls {
+        display: none;
+    }
 }

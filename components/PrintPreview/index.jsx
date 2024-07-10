@@ -6,7 +6,7 @@ import styles from "./styles.module.css"
 import { useState } from "react"
 import { useEffect } from "react"
 
-export function PrintPreview({ items, previewRef }) {
+export function PrintPreview({ items, setItems, previewRef }) {
 
     const { user } = usePocket()
 
@@ -55,25 +55,26 @@ export function PrintPreview({ items, previewRef }) {
                 <p>{pagesOfStickers.reduce((acc, i) => acc + i.length, 0)} items</p>
             </div>
 
-            {
-                pagesOfStickers.map(items => {
-                    return (
-                        <PreviewPage
-                            marginTop={user?.printSettings?.margin?.top}
-                            marginBottom={user?.printSettings?.margin?.bottom}
-                            marginLeft={user?.printSettings?.margin?.left}
-                            marginRight={user?.printSettings?.margin?.right}
-                            colSpacing={user?.printSettings?.colSpacing}
-                            rowSpacing={user?.printSettings?.rowSpacing}
-                            numCols={user?.printSettings?.numCols}
-                            numRows={user?.printSettings?.numRows}
-                            items={items}
-                            previewRef={previewRef}
-                        />
-                    )
-                })
-            }
-
+            <div className={styles.wrapper} ref={previewRef}>
+                {
+                    pagesOfStickers.map(items => {
+                        return (
+                            <PreviewPage
+                                marginTop={user?.printSettings?.margin?.top}
+                                marginBottom={user?.printSettings?.margin?.bottom}
+                                marginLeft={user?.printSettings?.margin?.left}
+                                marginRight={user?.printSettings?.margin?.right}
+                                colSpacing={user?.printSettings?.colSpacing}
+                                rowSpacing={user?.printSettings?.rowSpacing}
+                                numCols={user?.printSettings?.numCols}
+                                numRows={user?.printSettings?.numRows}
+                                items={items}
+                                setItems={setItems}
+                            />
+                        )
+                    })
+                }
+            </div>
 
         </section>
     ) : (

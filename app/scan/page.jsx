@@ -23,12 +23,7 @@ export default function ScanPage() {
             <div className={styles.scanner}>
                 <QrScanner
                     onDecode={(res) => {
-                        setErr(false)
-                        if(res.startsWith("v1-item_")) {
-                            router.push(`/storage/item/${res.split("_")[1]}`)
-                        } else {
-                            setErr(true)
-                        }
+                        router.push(`/storage/item/${res}`)
                     }}
 
                     containerStyle={{ height: "calc(100vh - var(--mobile-navbar-height))", position: "fixed", top:"0", left:"0", width:"100vw", paddingTop: "0 !important" }}

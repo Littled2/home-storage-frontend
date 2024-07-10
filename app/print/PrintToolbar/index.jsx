@@ -32,13 +32,7 @@ export function PrintToolbar({ previewRef, selectedLocation, setSelectedLocation
     }, [])
 
     const print = () => {
-        const iframe = document.createElement("iframe")
-        // iframe.style.display = "none"
-        document.body.appendChild(iframe)
-        iframe.contentDocument.write("<p>Hello</p>")
-        iframe.contentWindow.focus()
-        setTimeout(() => iframe.contentWindow.print(), 500)
-        
+        window.print()
     }
 
     return (
