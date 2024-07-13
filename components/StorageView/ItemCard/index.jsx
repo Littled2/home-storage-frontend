@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./styles.module.css"
 import { usePocket } from "@/contexts/PocketContext";
 
-export function ItemCard({ item }) {
+export function ItemCard({ item, selected, setSelected }) {
 
     const { pb } = usePocket()
 
@@ -12,7 +12,18 @@ export function ItemCard({ item }) {
         <Link href={"/storage/item/" + item?.id} className={styles.card}>
 
             <div>
-                <h3>{item.name}</h3>
+                <div className={styles.nameWrapper}>
+                    <h3>{item.name}</h3>
+                    <input
+                        type="checkbox"
+                        checked={selected.includes(item.id)}
+                        onClick={e => {
+                            e.stopPropagation()
+                            setSelected(sel => [ ...sel, item.id ])
+                        }}
+                    />
+                </div>
+
                 <p className={styles.location}>{item?.expand?.location?.name}</p>
             </div>
 
