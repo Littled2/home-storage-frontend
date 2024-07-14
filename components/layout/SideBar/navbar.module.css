@@ -9,6 +9,31 @@
     justify-content: space-between;
 }
 
+.userInfoCont {
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.userInfoCont:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+.userInfoCont:active {
+    outline: 1.2px solid var(--accent);
+}
+
+.itemsCount {
+    color: rgb(90, 90, 90);
+}
+
 .title {
     display: flex;
     gap: 1rem;

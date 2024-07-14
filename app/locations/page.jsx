@@ -17,37 +17,16 @@ export default function LocationsPage() {
 
     useEffect(() => {
 
-        pb.collection("locations_info").getFullList()
-        .then(locsInfo => setLocationsInfo)
+        // pb.collection("locations_info").getFullList()
+        // .then(locsInfo => setLocationsInfo)
 
-        pb.collection("locations").getFullList()
+        pb.collection("locations_info").getFullList()
         .then(locs => {
             setLoading(false)
             setLocations(locs)
         })
 
     }, [])
-
-    useEffect(() => {
-
-        if(!locationsInfo || locations.length < 0) {
-            return
-        }
-
-        let map = {}
-
-        locationsInfo.forEach(loc => map[loc.id] = loc.items)
-
-        setLocations(locs => {
-            return locs.map(loc => {
-                return {
-                    ...loc,
-                    items: map[loc.id]
-                }
-            })
-        })
-
-    }, [locationsInfo, locations])
 
 
     return (

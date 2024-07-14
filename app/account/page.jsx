@@ -21,27 +21,26 @@ export default function AccountPage() {
     return (
         <section className={styles.page}>
 
-            <h1>Your Account.</h1>
-            <h3>Logged in as {user?.firstName}</h3>
+            <h1 className={styles.heading}>Your Account.</h1>
 
             <br />
 
-            <div className={styles.btns}>
+            <div className={styles.options}>
 
                 <Link href={"/account/change-name"}>
                     <span>Change Name</span>
-                    <FaArrowRight />
+                    <div className={styles.icon}>
+                        <FaArrowRight />
+                    </div>
                 </Link>
 
                 <Link href={"/account/change-password"}>
                     <span>Change Password</span>
-                    <FaArrowRight />
+                    <div className={styles.icon}>
+                        <FaArrowRight />
+                    </div>
                 </Link>
 
-                <button href={"/account/change-password"} onClick={logout}>
-                    <span>Log Out</span>
-                    <LuLogOut />
-                </button>
 
             </div>
 

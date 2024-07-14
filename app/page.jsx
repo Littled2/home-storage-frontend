@@ -18,6 +18,8 @@ export default function StoragePage() {
     const [ query, setQuery ] = useState("")
     const [ location, setLocation ] = useState()
 
+    const [ itemsCount, setItemsCount ] = useState(0)
+
     return (
         <section className={styles.page}>
 

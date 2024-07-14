@@ -11,9 +11,9 @@ export function ItemCard({ item }) {
     return (
         <Link href={"/storage/item/" + item?.id} className={styles.card}>
 
-            <div>
-                <h3>{item.name}</h3>
-                <p className={styles.location}>{item?.expand?.location?.name}</p>
+            <div className={styles.infoWrapper}>
+                <h3 className={styles.name}>{item.name}</h3>
+                <p className={styles.location}>{item?.expand?.location?.name} </p>
             </div>
 
             <div>

@@ -11,14 +11,16 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoMdPrint, IoMdQrScanner } from "react-icons/io";
 import { usePocket } from "@/contexts/PocketContext";
+import Link from "next/link";
 
 export default function SideBar() {
 
     const [ render, setRender ] = useState(true)
+    const [ itemsCount, setItemsCount ] = useState(0)
 
     const pathname = usePathname()
 
-    const { user, logout } = usePocket()
+    const { user, logout, pb } = usePocket()
 
     useEffect(() => {
         if(pathname === "/login" || pathname === "/create-account") {
@@ -27,6 +29,15 @@ export default function SideBar() {
             setRender(true)
         }
     }, [pathname])
+
+    useEffect(() => {
+
+        if(!user) return
+
+        pb.collection("user_items").getOne(user.id)
+        .then(res => setItemsCount(res?.items))
+
+    }, [user])
 
     
     return render ? (
@@ -39,9 +50,10 @@ export default function SideBar() {
                 </h2>
             </section>
 
-            <section className={styles.hideOnMobile} style={{ paddingLeft: "1rem" }}>
+            <Link href={"/account"} className={[ styles.userInfoCont, styles.hideOnMobile ].join(" ")}>
                 <h3>{user?.firstName} {user?.lastName}</h3>
-            </section>
+                <small className={styles.itemsCount}>{itemsCount} items in storage</small>
+            </Link>
 
             <section className={styles.sideItemsCont}>
 

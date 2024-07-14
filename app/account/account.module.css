@@ -1,8 +1,14 @@
-.top {
+.page {
     display: flex;
-    justify-content: right;
+    flex-direction: column;
+    gap: var(--padding-thick);
 }
 
+.heading {
+    font-size: 2.5rem;
+    color: rgb(70, 70, 70);
+    font-weight: 600;
+}
 .accountBtn {
     width: 2.5rem;
     height: 2.5rem;
@@ -14,52 +20,33 @@
 
 
 
-.btns {
+.options {
     display: flex;
     gap: 12px;
-    flex-direction: column;
+    flex-wrap: wrap;
 }
 
-.btns > a, .btns > button {
-    padding: 16px 18px;
+.options > a {
+    width: max-content;
+    padding: 1rem 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px; 
     display: flex;
-    align-items: center;
-    border-radius: 12px;
-    background-color: rgb(225, 225, 225);
+    flex-direction: column;
+    gap: 0.85rem;
+    border-radius: 1rem;
+    background-color: white;
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-decoration: none;
-    color: black;
-    justify-content: space-between;
+    color: inherit;
 }
 
-.page {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+.options > a > .icon {
+    width: max-content;
+    color: gray !important;
 }
 
-
-.layout {
-    grid-template-areas: "a a ";
-}
-
-.number {
-    background-color: rgb(195, 232, 255);
-    border-radius: 8px;
-    padding: 14px;
-}
-
-.locations {
-    background-color: rgb(195, 232, 255);
-    border-radius: 8px;
-    padding: 14px;
-    display: flex;
-    gap: 16px;
-    flex-direction: column;
-}
-
-.locationsInner {
-    display: flex;
-    gap: 16px;
+.options > a:hover,
+.options > a:active {
+    outline: 1.2px solid var(--accent);
 }
