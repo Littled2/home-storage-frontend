@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./styles.module.css"
 import { usePocket } from "@/contexts/PocketContext";
 
-export function ItemCard({ item }) {
+export function ItemCard({ item, selected, setSelected }) {
 
     const { pb } = usePocket()
 

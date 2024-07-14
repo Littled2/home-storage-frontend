@@ -42,7 +42,8 @@
 @media print {
     .main {
         border-radius: 0;
-        padding: 0;
+        padding: 0 !important;
         background-color: white;
+        height: unset;
     }
 }

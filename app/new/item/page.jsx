@@ -35,6 +35,7 @@ export default function NewItemPage({ searchParams }) {
                         <Camera
                             idealFacingMode="environment"
                             onTakePhoto={dataUri => setImage(dataUri)}
+      
                         />
                     ) : (
                         <img src={image} className={styles.imagePreview} />

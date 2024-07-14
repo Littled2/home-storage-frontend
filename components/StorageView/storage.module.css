@@ -2,6 +2,7 @@
     display: grid;
     gap: var(--padding-thin);
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    position: relative;
 }
 
 .nothingHere {
@@ -20,6 +21,55 @@
 
 .nothingHere a {
     color: inherit;
+}
+
+.selectedInfo {
+    padding: 1rem 1.5rem;
+    position: fixed;
+    bottom: 2rem;
+    background-color: white;
+    border: 0.5px solid grey;
+    border-radius: 1000px;
+    left: 50%;
+    transform: translate(-50%);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.selectedInfo > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.printBtn {
+    color: white;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    background-color: var(--primary);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.removeSelectedBtn {
+    color: inherit;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 2px solid currentColor;
+    background-color: transparent;
+    border-radius: 0.5rem;
 }
 
 @media screen and (max-width: 1000px) {

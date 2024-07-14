@@ -22,10 +22,7 @@
 
 .name {
     font-weight: 500;
-    background-color: rgb(28, 28, 28) !important;
     width: 100%;
-    padding: 4px;
-    color: white;
     print-color-adjust: exact !important;
 }
 

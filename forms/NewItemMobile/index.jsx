@@ -13,8 +13,8 @@ export function NewItemMobile({ image }) {
     const router = useRouter()
     const { pb, user } = usePocket()
     
-    const [ location, setLocation ] = useState()
-    const [ subLocation, setSubLocation ] = useState()
+    const [ location, setLocation ] = useState("")
+    const [ subLocation, setSubLocation ] = useState("")
     const [ name, setName ] = useState('')
 
 

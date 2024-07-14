@@ -14,6 +14,8 @@ export default function LocationsPage() {
     const [ locations, setLocations ] = useState([])
     const [ locationsInfo, setLocationsInfo ] = useState([])
 
+    const [ infoAdded, setInfoAdded ] = useState(false)
+
 
     useEffect(() => {
 

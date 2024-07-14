@@ -32,25 +32,31 @@ export default function PrintLabels() {
         if(params.has("itemID")) {
             filter = `id = "${params.get("itemID")}"`
         }
+        
+        if(params.has("items")) {
+            let list = JSON.parse(params.get("items"))
+            filter = list.map(id => ` id = "${id}" `).join("||")
+        }
 
         pb.collection("items").getFullList({
             sort: "name",
             filter: filter
         })
         .then(setItems)
+
     }, [selectedLocation])
 
     return (
         <div className={styles.wrapper}>
 
-            <PrintToolbar selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation} />
+            <PrintToolbar previewRef={prevRef} selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation} />
 
             {/* <button onClick={window.print} className={styles.printButton}>
                 <BsPrinter />
                 <span>Print all</span>
             </button> */}
 
-            <PrintPreview previewRef={prevRef} items={items} />
+            <PrintPreview previewRef={prevRef} items={items} setItems={setItems} />
 
             {/* <section className={styles.labels}>
                 {

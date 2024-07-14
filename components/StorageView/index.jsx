@@ -6,12 +6,15 @@ import { usePocket } from "@/contexts/PocketContext"
 import { useEffect, useState } from "react"
 import { ItemCard } from "./ItemCard"
 import Link from "next/link"
+import { BsPrinter } from "react-icons/bs"
 
 
 export function StorageView({ location, query=''  }) {
 
     const [ items, setItems ] = useState([])
     const [ loading, setLoading ] = useState(true)
+
+    const [ selected, setSelected ] = useState([])
 
     const { pb } = usePocket()
 
@@ -20,7 +23,7 @@ export function StorageView({ location, query=''  }) {
         setLoading(true)
 
         let options = {
-            sort: "created",
+            sort: "-created",
             expand: "location"
         }
 
@@ -74,8 +77,31 @@ export function StorageView({ location, query=''  }) {
             }
             {
                 items.map((item, i) => {
-                    return <ItemCard item={item} key={i} />
+                    return <ItemCard item={item} key={i} selected={selected} setSelected={setSelected} />
                 })
+            }
+
+            {
+                selected.length > 0 && (
+                    <div className={styles.selectedInfo}>
+                        <div>
+                            <p>Selected <b>{selected?.length}</b> items</p>
+                            <button onClick={() => setSelected([])} className={styles.removeSelectedBtn}>Delete selected</button>
+                        </div>
+        
+                        <Link
+                            className={styles.printBtn}
+                            href={{
+                                pathname: "/print",
+                                query: {
+                                    items: JSON.stringify(selected)
+                                }
+                            }}>
+                            <BsPrinter />
+                            <span>Print selected</span>
+                        </Link>
+                    </div>
+                )
             }
         </section>
     ) : (
