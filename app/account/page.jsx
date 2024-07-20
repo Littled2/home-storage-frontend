@@ -23,6 +23,8 @@ export default function AccountPage() {
 
             <h1 className={styles.heading}>Your Account.</h1>
 
+            <p>{user?.email}</p>
+
             <br />
 
             <div className={styles.options}>

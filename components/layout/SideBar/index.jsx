@@ -51,8 +51,16 @@ export default function SideBar() {
             </section>
 
             <Link href={"/account"} className={[ styles.userInfoCont, styles.hideOnMobile ].join(" ")}>
-                <h3>{user?.firstName} {user?.lastName}</h3>
-                <small className={styles.itemsCount}>{itemsCount} items in storage</small>
+                {
+                    user ? (
+                        <>
+                            <h3>{user?.firstName} {user?.lastName}</h3>
+                            <small className={styles.itemsCount}>{itemsCount} items in storage</small>
+                        </>
+                    ) : (
+                        <h3>Not logged in</h3>
+                    )
+                }
             </Link>
 
             <section className={styles.sideItemsCont}>

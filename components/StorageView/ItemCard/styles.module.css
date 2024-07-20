@@ -11,6 +11,8 @@
     flex-direction: column;
     gap: 0.8rem;
     overflow: hidden;
+    transition: 0.2s;
+    user-select: none;
 }
 
 .card:hover {
@@ -41,6 +43,22 @@
 .mobileImage {
     object-fit: cover;
     display: none;
+}
+
+.dragOver .subItems {
+    border: 2px dashed var(--accent);
+    padding: 6px;
+}
+
+.dragging {
+    opacity: 0.4;
+    transform: scale(0.9);
+}
+
+.subItems {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 @media screen and (max-width: 1000px) {

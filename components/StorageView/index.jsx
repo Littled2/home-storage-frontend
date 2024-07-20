@@ -16,6 +16,10 @@ export function StorageView({ location, query=''  }) {
 
     const [ selected, setSelected ] = useState([])
 
+    const [ dragged, setDragged ] = useState()
+
+    const [ refreshCounter, setRefreshCounter ] = useState(0)
+
     const { pb } = usePocket()
 
     useEffect(() => {
@@ -30,35 +34,29 @@ export function StorageView({ location, query=''  }) {
         let qFilter = ""
         let lFilter = ""
 
+        // name ~ '%${query}%' || description ~ '%${query}%' ||
         if(query !== "") {
-            qFilter = `(name ~ '%${query}%' || description ~ '%${query}%')`
+            qFilter = `items_via_items.name ?~ '${query}'`
         }
 
         if(location && location !== "all-locations") {
             lFilter += `location = "${location}"`
         }
 
-        let filter = ""
+        // let filters = [ "isChild = false" ]
+        let filters = []
 
-        if(qFilter && lFilter) {
-            filter = qFilter + " && " + lFilter
-        } else {
-            if(qFilter) {
-                filter = qFilter
-            } else if(lFilter) {
-                filter = lFilter
-            }
-        }
+        if(lFilter) filters.push(lFilter)
 
-        if(filter !== "") {
-            options.filter = filter
-        }
+        if(qFilter) filters.push(qFilter)
 
-        console.log({filter})
+        options.filter = filters.join(" && ")
 
-        pb.collection("items").getFullList(options)
+        console.log(options.filter)
+
+        pb.collection("items").getFullList(options, { expand: "location,items.parent" })
         .then(i => {
-            console.log({i})
+            console.log(i)
             setItems(i)
             setLoading(false)
         })
@@ -66,7 +64,9 @@ export function StorageView({ location, query=''  }) {
             console.error("Error getting storage search results", err)
             setLoading(false)
         })
-    }, [location, query])
+    }, [location, query, refreshCounter])
+
+
 
     return !(items.length === 0 && !loading) ? (
         <section className={styles.wrapper}>
@@ -77,7 +77,7 @@ export function StorageView({ location, query=''  }) {
             }
             {
                 items.map((item, i) => {
-                    return <ItemCard item={item} key={i} selected={selected} setSelected={setSelected} />
+                    return <ItemCard item={item} key={i} selected={selected} setSelected={setSelected} dragged={dragged} setDragged={setDragged} setRefreshCounter={setRefreshCounter} />
                 })
             }
 

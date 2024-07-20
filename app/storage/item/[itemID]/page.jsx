@@ -12,6 +12,7 @@ import { MdEdit, MdHome, MdRoom } from "react-icons/md"
 import Link from "next/link"
 import { LocationInfo } from "@/components/links/Location"
 import { useRouter } from "next/navigation"
+import { SubItemCard } from "@/components/StorageView/ItemCard/SubItemCard"
 
 export default function ItemViewPage({ params }) {
 
@@ -26,7 +27,7 @@ export default function ItemViewPage({ params }) {
 
     useEffect(() => {
 
-        pb.collection('items').getOne(params.itemID, { expand: "location,sub_location" })
+        pb.collection('items').getOne(params.itemID, { expand: "location,sub_location,items" })
         .then(i => {
             setItem(i)
             setLocation(i.expand?.location)
@@ -38,7 +39,7 @@ export default function ItemViewPage({ params }) {
             setLocation(e.record.expand?.location)
             setSubLocationID(e.record?.sub_location)
         }, {
-            expand: "location,subLocation"
+            expand: "location,subLocation,items"
         })
 
         return () => pb.collection('items').unsubscribe()
@@ -151,6 +152,22 @@ export default function ItemViewPage({ params }) {
                                 </p>
                             </div>
                         </div>
+
+
+                                {
+                                    item?.expand?.items && (
+                                        <div className={styles.desc}>
+                                            <div className={styles.descTop} >
+                                                <h4>Contents</h4>
+                                            </div>
+                                            <div className={styles.contentsInner}>
+                                                {
+                                                    item.expand?.items.map(i => <SubItemCard item={i} key={i?.id} />)
+                                                }
+                                            </div>
+                                        </div>
+                                    )
+                                }
 
                         <div>
                             <Link className={styles.printLink} href={{ pathname:`/print`, query: { itemID: item?.id }}}>
