@@ -22,10 +22,23 @@
 .name {
     text-wrap: nowrap;
     text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .infoWrapper {
     overflow: hidden;
+}
+
+.nameWrapper {
+    display: flex;
+    gap: 4px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card input[type=checkbox] {
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 .location {
