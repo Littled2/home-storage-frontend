@@ -63,7 +63,27 @@ export function ItemCard({ item, selected, setSelected, dragged, setDragged, set
         >
 
             <div className={styles.infoWrapper}>
-                <h3 className={styles.name}>{item.name}</h3>
+                <div className={styles.nameWrapper}>
+                    <h3 className={styles.name}>{item.name}</h3>
+                    <input
+                        type="checkbox"
+                        checked={selected.includes(item.id)}
+                        onClick={e => {
+                            e.stopPropagation()
+
+                            if(e.target.checked) {
+                                setSelected(sel => [ ...sel, item.id ])
+                            } else {
+                                const sel = JSON.parse(JSON.stringify(selected))
+
+                                sel.splice(sel.findIndex(i => i === item.id), 1)
+
+                                setSelected(sel)
+                            }
+                        }}
+                    />
+                </div>
+
                 <p className={styles.location}>{item?.expand?.location?.name} </p>
             </div>
 

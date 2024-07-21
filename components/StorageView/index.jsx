@@ -54,7 +54,7 @@ export function StorageView({ location, query=''  }) {
 
         console.log(options.filter)
 
-        pb.collection("items").getFullList(options, { expand: "location,items.parent" })
+        pb.collection("items").getFullList(options, { expand: "location" })
         .then(i => {
             console.log(i)
             setItems(i)
