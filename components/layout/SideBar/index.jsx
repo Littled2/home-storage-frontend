@@ -1,7 +1,7 @@
 'use client'
 
 import { LuSearch } from "react-icons/lu";
-import { BsBoxSeam, BsDoorClosed, BsHouse, BsPrinter } from "react-icons/bs";
+import { BsBoxSeam, BsDoorClosed, BsHouse, BsPerson, BsPrinter } from "react-icons/bs";
 import { MdHome, MdOutlineAddBox } from "react-icons/md";
 import { RxPerson } from "react-icons/rx";
 
@@ -70,6 +70,8 @@ export default function SideBar() {
                 <NavItem href={"/"} icon={<BsBoxSeam />} label={"Storage"} />
 
                 <NavItem href={"/locations"} icon={<BsDoorClosed />} label={"Locations"} />
+
+                <NavItem onlyShowOnPlatform={"mobile"}  href={"/account"} icon={<BsPerson />} label={"Account"} />
 
                 <NavItem onlyShowOnPlatform={"mobile"} href={"/scan"} icon={<IoMdQrScanner />} label={"Scan"} />
 

@@ -54,3 +54,14 @@
 .options > a:active {
     outline: 1.2px solid var(--accent);
 }
+
+@media screen and (max-width: 1000px) {
+    .options {
+        flex-direction: column;
+    }
+    .options > a {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

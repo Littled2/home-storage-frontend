@@ -43,6 +43,17 @@ export default function AccountPage() {
                     </div>
                 </Link>
 
+                <Link onClick={e => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    logout()
+                }} href={"/login"}>
+                    <span>Log Out</span>
+                    <div className={styles.icon}>
+                        <LuLogOut />
+                    </div>
+                </Link>
+
 
             </div>
 
