@@ -5,6 +5,7 @@ import styles from "./styles.module.css"
 import { usePocket } from "@/contexts/PocketContext";
 import { useState } from "react";
 import { SubItemCard } from "./SubItemCard";
+import { BsChevronRight } from "react-icons/bs";
 
 export function ItemCard({ item, selected, setSelected, dragged, setDragged, setRefreshCounter }) {
 
@@ -84,7 +85,19 @@ export function ItemCard({ item, selected, setSelected, dragged, setDragged, set
                     />
                 </div>
 
-                <p className={styles.location}>{item?.expand?.location?.name} </p>
+                <p className={styles.location}>
+                    {item?.expand?.location?.name}
+                    {
+                        item?.sub_location && (
+                            <>
+                                <div className={styles.chevron}>
+                                <BsChevronRight />    
+                                </div>       
+                                <span>{item?.expand?.sub_location?.name}</span>
+                            </>
+                        )
+                    }
+                </p>
             </div>
 
             <div>
@@ -93,10 +106,13 @@ export function ItemCard({ item, selected, setSelected, dragged, setDragged, set
             </div>
 
             <div className={styles.subItems}>
+
+                <small className={styles.label}>Put item within item</small>
+
                 {
-                    item?.expand?.items && item?.expand?.items.length > 0 && (
-                        item?.expand?.items.map(i => {
-                            return <SubItemCard item={i} key={"_" + i.id} />
+                    item?.expand?.["items(parent)"] && item?.expand?.["items(parent)"].length > 0 && (
+                        item?.expand?.["items(parent)"].map(i => {
+                            return <SubItemCard setRefreshCounter={setRefreshCounter} item={i} key={"_" + i.id} />
                         })
                     )
                 }

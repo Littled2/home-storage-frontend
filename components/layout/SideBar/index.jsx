@@ -67,11 +67,13 @@ export default function SideBar() {
 
                 {/* <NavItem onlyShowOnPlatform={"mobile"} href={"/"} icon={<LuSearch />} label={"Find"} /> */}
 
-                <NavItem href={"/"} icon={<BsBoxSeam />} label={"Storage"} />
+                <NavItem onlyShowOnPlatform={"desktop"} href={"/"} icon={<BsBoxSeam />} label={"Storage"} />
 
                 <NavItem href={"/locations"} icon={<BsDoorClosed />} label={"Locations"} />
 
                 <NavItem onlyShowOnPlatform={"mobile"}  href={"/account"} icon={<BsPerson />} label={"Account"} />
+                
+                <NavItem onlyShowOnPlatform={"mobile"} href={"/"} icon={<BsBoxSeam />} label={"Storage"} />
 
                 <NavItem onlyShowOnPlatform={"mobile"} href={"/scan"} icon={<IoMdQrScanner />} label={"Scan"} />
 

@@ -16,7 +16,6 @@ export function SubLocationSelect({ locationID, selectedSubLocationID, setSelect
         .then(locs => setLocations(locs))
     }, [locationID])
 
-    useEffect(() => console.log(selectedSubLocationID))
     return (
         <select {...props} onInput={e => setSelectedSubLocationID(e.target.value)}>
             <option value="" selected={selectedSubLocationID === ""}>No location specified</option>

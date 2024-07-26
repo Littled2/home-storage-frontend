@@ -1,6 +1,6 @@
 .outerWrapper {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 12px;
     background-color: var(--secondary);
     padding: var(--padding-thin);

@@ -36,6 +36,7 @@
 
 .title {
     display: flex;
+    font-size: 1.85rem;
     gap: 1rem;
     align-items: center;
     padding-left: 1rem;

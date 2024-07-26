@@ -28,7 +28,7 @@ export function StorageView({ location, query=''  }) {
 
         let options = {
             sort: "-created",
-            expand: "location"
+            expand: "location, sub_location, items(parent)"
         }
 
         let qFilter = ""
@@ -36,7 +36,8 @@ export function StorageView({ location, query=''  }) {
 
         // name ~ '%${query}%' || description ~ '%${query}%' ||
         if(query !== "") {
-            qFilter = `items_via_items.name ?~ '${query}'`
+            // qFilter = `locations_via_location.name ?~ '${query}'`
+            qFilter = `name ~ '%${query}%' || description ~ '%${query}%'`
         }
 
         if(location && location !== "all-locations") {
@@ -54,7 +55,7 @@ export function StorageView({ location, query=''  }) {
 
         console.log(options.filter)
 
-        pb.collection("items").getFullList(options, { expand: "location" })
+        pb.collection("items").getFullList(options)
         .then(i => {
             console.log(i)
             setItems(i)

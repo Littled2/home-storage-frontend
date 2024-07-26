@@ -27,7 +27,7 @@ export default function ItemViewPage({ params }) {
 
     useEffect(() => {
 
-        pb.collection('items').getOne(params.itemID, { expand: "location,sub_location,items" })
+        pb.collection('items').getOne(params.itemID, { expand: "location, sub_location, items(parent), parent" })
         .then(i => {
             setItem(i)
             setLocation(i.expand?.location)
@@ -39,7 +39,7 @@ export default function ItemViewPage({ params }) {
             setLocation(e.record.expand?.location)
             setSubLocationID(e.record?.sub_location)
         }, {
-            expand: "location,subLocation,items"
+            expand: "location, sub_location, items(parent), parent"
         })
 
         return () => pb.collection('items').unsubscribe()
@@ -99,7 +99,7 @@ export default function ItemViewPage({ params }) {
                     <div>
                         {
                             location !== null ? (
-                                <LocationInfo itemID={params.itemID} location={location} subLocationID={subLocationID} />
+                                <LocationInfo itemID={params.itemID} item={item} location={location} subLocationID={subLocationID} />
                             ) : (
                                 <></>
                             )
@@ -155,14 +155,14 @@ export default function ItemViewPage({ params }) {
 
 
                                 {
-                                    item?.expand?.items && (
+                                    item?.expand?.["items(parent)"] && (
                                         <div className={styles.desc}>
                                             <div className={styles.descTop} >
                                                 <h4>Contents</h4>
                                             </div>
                                             <div className={styles.contentsInner}>
                                                 {
-                                                    item.expand?.items.map(i => <SubItemCard item={i} key={i?.id} />)
+                                                    item.expand?.["items(parent)"].map(i => <SubItemCard item={i} key={i?.id} />)
                                                 }
                                             </div>
                                         </div>

@@ -1,13 +1,14 @@
 'use client'
 
 import styles from "./link.module.css"
-import { BsChevronRight, BsDoorClosed } from "react-icons/bs"
+import { BsBox, BsBox2, BsChevronRight, BsDoorClosed } from "react-icons/bs"
 import { LocationSelect } from "@/components/LocationSelect"
 import { useCallback, useEffect, useState } from "react"
 import { usePocket } from "@/contexts/PocketContext"
 import { SubLocationSelect } from "@/components/SubLocationSelect"
+import { ItemSelect } from "@/components/ItemSelect"
 
-export function LocationInfo({ location, subLocationID, itemID }) {
+export function LocationInfo({ location, subLocationID, item, itemID }) {
 
     const { pb } = usePocket()
 
@@ -34,11 +35,20 @@ export function LocationInfo({ location, subLocationID, itemID }) {
 
     }, [pb])
 
+    const setItemParent = useCallback(parentID => {
+
+        pb.collection("items").update(itemID, {
+            parent: parentID
+        })
+
+    }, [pb])
+
     return (
         <div className={styles.outerWrapper}>
             <div>
                 <h4>Location</h4>
             </div>
+
             <div className={styles.wrapper}>
                 <div className={styles.link}>
                     <BsDoorClosed />
@@ -60,6 +70,19 @@ export function LocationInfo({ location, subLocationID, itemID }) {
                     )
                 }
             </div>
+
+            <div className={styles.wrapper}>
+                    <div className={styles.link}>
+                        <BsBox2 />
+                    </div>
+    
+                    {
+                        location && (
+                            <ItemSelect className={styles.selectLocation} selectedItemID={item?.parent} setSelectedItemID={setItemParent} locationID={item?.location} />
+                        )
+                    }
+    
+                </div>
         </div>
     )
 }
