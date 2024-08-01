@@ -1,12 +1,15 @@
 .image {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 0.5rem;
+    width: 2em;
+    height: 2em;
+    border-radius: 0.3rem;
+    display: none;
 }
 
 .name {
-    font-size: 0.8rem;
-    /* color: rgb(32, 32, 32); */
+    font-size: 0.7rem;
+    color: rgb(32, 32, 32);
+    text-decoration: none !important;
+    width: max-content;
 }
 
 .card {
@@ -17,6 +20,7 @@
     border-radius: 1rem;
     padding: 8px;
     background-color: rgba(100, 100, 100, 0.1);
+    width: max-content;
 }
 
 .card a {
@@ -39,4 +43,13 @@
     align-items: center;
     border: none;
     cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    .card {
+        width: 100%;
+    }
+    .image {
+        display: block;
+    }
 }

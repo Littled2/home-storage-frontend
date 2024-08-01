@@ -3,16 +3,19 @@
 import styles from "./storage.module.css"
 
 import { usePocket } from "@/contexts/PocketContext"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ItemCard } from "./ItemCard"
 import Link from "next/link"
 import { BsPrinter } from "react-icons/bs"
 
 
-export function StorageView({ location, query=''  }) {
+export function StorageView({ location, subLocation, query=''  }) {
+
+    const itemsPerPage = 25
 
     const [ items, setItems ] = useState([])
-    const [ loading, setLoading ] = useState(true)
+    const [ loading, setLoading ] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1)
 
     const [ selected, setSelected ] = useState([])
 
@@ -20,9 +23,37 @@ export function StorageView({ location, query=''  }) {
 
     const [ refreshCounter, setRefreshCounter ] = useState(0)
 
+    const container = useRef()
+
     const { pb } = usePocket()
 
+
+    const handleScroll = () => {
+
+      const scrollTop = document.querySelector("main").scrollTop
+      const scrollHeight = document.querySelector("main").scrollHeight
+      const height = document.querySelector("main").getBoundingClientRect().height
+
+      if (Math.round(scrollHeight - scrollTop - height) === 0) {
+        setCurrentPage(c => c + 1)
+      }
+    }
+
     useEffect(() => {
+
+        document.querySelector("main").addEventListener('scroll', handleScroll)
+
+        return () => {
+            document.querySelector("main").removeEventListener('scroll', handleScroll)
+        }
+
+    }, [])
+
+
+
+    useEffect(() => {
+
+        if(loading) return
 
         setLoading(true)
 
@@ -31,51 +62,47 @@ export function StorageView({ location, query=''  }) {
             expand: "location, sub_location, items(parent)"
         }
 
-        let qFilter = ""
-        let lFilter = ""
+        let filters = []
 
-        // name ~ '%${query}%' || description ~ '%${query}%' ||
         if(query !== "") {
-            // qFilter = `locations_via_location.name ?~ '${query}'`
-            qFilter = `name ~ '%${query}%' || description ~ '%${query}%'`
+            filters.push(`name ~ '%${query}%' || description ~ '%${query}%'`)
         }
 
         if(location && location !== "all-locations") {
-            lFilter += `location = "${location}"`
+           filters.push(`location = "${location}"`)
         }
-
-        // let filters = [ "isChild = false" ]
-        let filters = []
-
-        if(lFilter) filters.push(lFilter)
-
-        if(qFilter) filters.push(qFilter)
+        
+        if(subLocation && subLocation !== "all-sub-locations") {
+            filters.push(`sub_location = "${subLocation}"`)
+        }
 
         options.filter = filters.join(" && ")
 
-        console.log(options.filter)
-
-        pb.collection("items").getFullList(options)
+        pb.collection("items").getList(
+            currentPage,
+            itemsPerPage,
+            options
+        )
         .then(i => {
-            console.log(i)
-            setItems(i)
+            console.log(i.items)
+            setItems([ ...items, ...i.items ])
             setLoading(false)
         })
         .catch(err => {
             console.error("Error getting storage search results", err)
             setLoading(false)
         })
-    }, [location, query, refreshCounter])
+    }, [location, subLocation, query, refreshCounter, currentPage])
+
+    useEffect(() => {
+        setItems([])
+        setCurrentPage(1)
+    }, [location, subLocation, query])
 
 
 
     return !(items.length === 0 && !loading) ? (
-        <section className={styles.wrapper}>
-            {
-                loading && (
-                    <center>Loading...</center>
-                )
-            }
+        <section className={styles.wrapper} ref={container}>
             {
                 items.map((item, i) => {
                     return <ItemCard item={item} key={i} selected={selected} setSelected={setSelected} dragged={dragged} setDragged={setDragged} setRefreshCounter={setRefreshCounter} />
@@ -83,11 +110,17 @@ export function StorageView({ location, query=''  }) {
             }
 
             {
+                loading && (
+                    <center>Loading...</center>
+                )
+            }
+
+            {
                 selected.length > 0 && (
                     <div className={styles.selectedInfo}>
                         <div>
                             <p>Selected <b>{selected?.length}</b> items</p>
-                            <button onClick={() => setSelected([])} className={styles.removeSelectedBtn}>Delete selected</button>
+                            {/* <button onClick={() => setSelected([])} className={styles.removeSelectedBtn}>Delete selected</button> */}
                         </div>
         
                         <Link

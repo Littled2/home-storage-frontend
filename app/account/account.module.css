@@ -55,7 +55,7 @@
     outline: 1.2px solid var(--accent);
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1500px) {
     .options {
         flex-direction: column;
     }

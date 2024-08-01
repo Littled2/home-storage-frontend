@@ -40,14 +40,34 @@
 }
 
 .locationSelect {
-    border-top-right-radius: inherit;
-    border-bottom-right-radius: inherit;
+    /* border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit; */
     border-left: 2px solid var(--bg-colour);
     padding: 1rem 1.5rem;
+    width: min-content;
+}
+
+.locationSelected {
+    border-radius: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .toolbar {
+        /* margin-top: 14px; */
+        position: sticky;
+        top: 14px;
+        z-index: 100;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .locationSelect {
+        padding-left: 6px;
+        padding-right: 6px;
+        max-width: 20%;
+    }
 }
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 700px) {
 
      .toolbar {
         flex-direction: column;

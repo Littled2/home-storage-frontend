@@ -3,7 +3,7 @@
 :root {
     --bg-colour: rgb(243 241 239);
     --primary: rgb(15 19 34);
-    --secondary: rgb(217 188 168);
+    --secondary: rgb(217, 188, 168);
     --secondary-lighter: rgba(217, 188, 168, 0.8);
     --tertiary: rgb(149 207 217);
     --accent: rgb(254 76 36);
@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1500px) {
     body {
         flex-direction: column-reverse;
         height: 100vh;

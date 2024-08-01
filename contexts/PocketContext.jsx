@@ -15,9 +15,9 @@ import ms from "ms";
 import { useRouter } from "next/navigation";
 
 // const BASE_URL = "http://127.0.0.1:8090";
-// const BASE_URL = "http://localhost:8090";
+const BASE_URL = "http://localhost:8090";
 // const BASE_URL = "http://192.168.1.169:8090";
-const BASE_URL = "http://192.168.1.196:8090";
+// const BASE_URL = "http://192.168.1.196:8090";
 // const BASE_URL = "http://192.168.43.9:8090"
 
 const fiveMinutesInMs = ms("5 minutes");

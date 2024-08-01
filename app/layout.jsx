@@ -1,22 +1,31 @@
-'use client'
-
-import { PocketProvider, usePocket } from "@/contexts/PocketContext";
-import styles from "./layout.module.css"
+import { PocketProvider } from "@/contexts/PocketContext";
 import SideBar from "@/components/layout/SideBar";
 import "./globals.css"
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { AuthCheck } from "@/components/AuthCheck";
-import { MdMenu } from "react-icons/md";
+import { MainElement } from "@/components/Main";
+
+export const metadata = {
+    title: "Findit",
+    description: "Manage your home inventory",
+    generator: "Next.js",
+    manifest: "/manifest.json",
+    keywords: ["findit"],
+    themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#fff" }],
+    authors: [
+      {
+        name: "Edward Blewitt",
+        url: "https://edward-blewitt.uk",
+      },
+    ],
+    viewport:
+      "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
+    icons: [
+      { rel: "apple-touch-icon", url: "icons/findit.png" },
+      { rel: "icon", url: "icons/findit.png" },
+    ],
+  };
 
 export default function HomeLayout({ children }) {
-
-    const pathname = usePathname()
-
-    const { user } = usePocket()
-
-    const [ mainStyles, setMainStyles ] = useState({})
-
 
     return (
         <html>
@@ -26,9 +35,9 @@ export default function HomeLayout({ children }) {
 
                             <SideBar />
 
-                            <main className={[ styles.main, pathname === "/" ? styles.mobileMain : pathname === "/new/item" ? styles.noPadding : "" ].join(" ")} style={mainStyles}>
+                            <MainElement>
                                 {children}
-                            </main>
+                            </MainElement>
 
                         </AuthCheck>
                 </PocketProvider>

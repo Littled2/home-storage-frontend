@@ -80,7 +80,7 @@
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1500px) {
     .wrapper {
         padding: 0;
         flex-direction: row;
@@ -107,6 +107,7 @@
         flex-direction: row;
         justify-content: space-evenly;
         flex: 1;
+        gap: 4px;
     }
 }
 

@@ -17,6 +17,7 @@ export default function StoragePage() {
 
     const [ query, setQuery ] = useState("")
     const [ location, setLocation ] = useState()
+    const [ subLocation, setSubLocation ] = useState()
 
     const [ itemsCount, setItemsCount ] = useState(0)
 
@@ -25,9 +26,9 @@ export default function StoragePage() {
 
             {/* <h1 className={styles.mobileHeading}>Everything in your storage</h1> */}
 
-            <StorageToolbar query={query} setQuery={setQuery} setLocation={setLocation} />
+            <StorageToolbar query={query} setQuery={setQuery} setLocation={setLocation} location={location} setSubLocation={setSubLocation} />
 
-            <StorageView location={location} query={query} />
+            <StorageView location={location} subLocation={subLocation} query={query} />
 
             <Link href={"/new/item"} className={styles.newItemBtnMobile}>
                 <img src="/add.png" />
