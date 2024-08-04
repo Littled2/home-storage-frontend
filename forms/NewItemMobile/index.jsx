@@ -30,6 +30,7 @@ export function NewItemMobile({ image }) {
         data.append("user", user.id)
 
         data.append("location", location)
+        data.append("sub_location", subLocation)
 
         data.append("image", image)
 

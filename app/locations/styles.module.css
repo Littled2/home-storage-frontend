@@ -63,7 +63,7 @@
 }
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 650px) {
     .newLocationBtn {
         bottom: calc(var(--mobile-navbar-height) + 12px);
         right: var(--main-padding);

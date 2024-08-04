@@ -75,7 +75,7 @@ export default function SideBar() {
                 
                 <NavItem onlyShowOnPlatform={"mobile"} href={"/"} icon={<BsBoxSeam />} label={"Storage"} />
 
-                <NavItem onlyShowOnPlatform={"mobile"} href={"/scan"} icon={<IoMdQrScanner />} label={"Scan"} />
+                <NavItem href={"/scan"} icon={<IoMdQrScanner />} label={"Scan"} />
 
                 <NavItem onlyShowOnPlatform={"mobile"} href={"/new/item"} icon={<MdOutlineAddBox />} label={"Add"} />
 

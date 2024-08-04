@@ -67,7 +67,7 @@
 }
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 650px) {
 
      .toolbar {
         flex-direction: column;

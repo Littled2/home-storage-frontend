@@ -94,6 +94,7 @@ export function StorageView({ location, subLocation, query=''  }) {
         })
     }, [location, subLocation, query, refreshCounter, currentPage])
 
+
     useEffect(() => {
         setItems([])
         setCurrentPage(1)

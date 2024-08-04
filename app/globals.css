@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1200px) {
     body {
         flex-direction: column-reverse;
         height: 100vh;

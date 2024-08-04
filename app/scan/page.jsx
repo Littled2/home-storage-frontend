@@ -26,15 +26,17 @@ export default function ScanPage() {
                         router.push(`/storage/item/${res}`)
                     }}
 
-                    containerStyle={{ height: "calc(100vh - var(--mobile-navbar-height))", position: "fixed", top:"0", left:"0", width:"100vw", paddingTop: "0 !important" }}
+                    // containerStyle={{ height: "calc(100vh - var(--mobile-navbar-height))", position: "fixed", top:"0", left:"0", width:"100vw", paddingTop: "0 !important" }}
                     
                     // videoStyle={{ height: "calc(100vh - var(--mobile-navbar-height)) !important" }}
 
                     viewFinderBorder={1}
 
+                    
                     onError={(error) => console.log(error?.message)}
                     scanDelay={300}
                     videoId="video"
+                    viewFinder={() => <></>}
                 />
 
                 <video id="video"></video>

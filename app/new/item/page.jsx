@@ -38,17 +38,17 @@ export default function NewItemPage({ searchParams }) {
       
                         />
                     ) : (
-                        <img src={image} className={styles.imagePreview} />
+                        <img src={image} className={styles.imagePreview} onClick={() => setImage(null)} />
                     )
                 }
 
             </div>
 
             <div className={styles.page2} style={{ top: !image ? "100%" : "20%" }}>
-                <button className={styles.retakeBtn} onClick={() => setImage(null)}>
+                {/* <button className={styles.retakeBtn} onClick={() => setImage(null)}>
                     <BsCamera />
                     <span>Retake photo</span>
-                </button>
+                </button> */}
 
                 {
                     image && (

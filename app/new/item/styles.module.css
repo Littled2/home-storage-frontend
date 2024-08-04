@@ -27,6 +27,16 @@
     height: 100%;
     object-fit: contain;
     object-position: top;
+    animation: darken 0.4s forwards;
+}
+
+@keyframes darken {
+    from {
+        filter: brightness(100%);
+    }
+    to {
+        filter: brightness(50%);
+    }
 }
 
 .page2 {

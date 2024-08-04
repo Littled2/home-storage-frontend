@@ -25,7 +25,11 @@
 
 .selectedInfo {
     padding: 1rem 1.5rem;
-    position: fixed;
+    position: sticky;
+
+    height: min-content;
+    width: max-content;
+    
     bottom: 2rem;
     background-color: white;
     border: 0.5px solid grey;
@@ -37,6 +41,7 @@
     display: flex;
     align-items: center;
     gap: 4rem;
+    margin: auto;
 }
 
 .selectedInfo > div {
@@ -77,9 +82,12 @@
     .wrapper {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
+    .selectedInfo {
+        bottom: 0;
+    }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 650px) {
     .wrapper {
         display: flex;
         flex-direction: column;

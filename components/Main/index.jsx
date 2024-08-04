@@ -8,7 +8,13 @@ export function MainElement({ children }) {
     const pathname = usePathname()
 
     return (
-        <main className={[ styles.main, pathname === "/" ? styles.mobileMain : pathname === "/new/item" ? styles.noPadding : "" ].join(" ")}>
+        <main className={[
+                styles.main,
+                pathname === "/" ?
+                    styles.mobileMain :
+                        pathname === "/new/item" ? 
+                            styles.noPadding : ""
+            ].join(" ")}>
             {children}
         </main>
     )
