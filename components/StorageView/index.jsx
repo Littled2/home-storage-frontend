@@ -15,7 +15,7 @@ export function StorageView({ location, subLocation, query=''  }) {
 
     const [ items, setItems ] = useState([])
     const [ loading, setLoading ] = useState(false)
-    const [currentPage, setCurrentPage] = useState(1)
+    const [ currentPage, setCurrentPage ] = useState(1)
 
     const [ selected, setSelected ] = useState([])
 
@@ -23,7 +23,10 @@ export function StorageView({ location, subLocation, query=''  }) {
 
     const [ refreshCounter, setRefreshCounter ] = useState(0)
 
-    const [ options, setOptions ] = useState()
+    const [ options, setOptions ] = useState({
+        sort: "-created",
+        expand: "location, sub_location, items(parent)"
+    })
 
     const container = useRef()
 
@@ -42,17 +45,14 @@ export function StorageView({ location, subLocation, query=''  }) {
     }
 
     useEffect(() => {
-
         document.querySelector("main").addEventListener('scroll', handleScroll)
-
-        return () => {
-            document.querySelector("main").removeEventListener('scroll', handleScroll)
-        }
-
+        return () => document.querySelector("main").removeEventListener('scroll', handleScroll)
     }, [])
 
 
 
+
+    // Rebuilds the pb options object whenever the search details change
     useEffect(() => {
 
         let temp_options = {
@@ -76,17 +76,22 @@ export function StorageView({ location, subLocation, query=''  }) {
 
         temp_options.filter = filters.join(" && ")
 
+        
+        setItems([])
+        setCurrentPage(1)
         setOptions(temp_options)
 
-    }, [location, subLocation, query, refreshCounter, currentPage])
+    }, [ location, subLocation, query ])
 
     
     // Triggered whenever the query changes
     useEffect(() => {
 
-        if(loading) return
+        if(!options || loading) return
 
         setLoading(true)
+
+        console.log({options})
 
         pb.collection("items").getList(
             currentPage,
@@ -107,12 +112,9 @@ export function StorageView({ location, subLocation, query=''  }) {
 
 
     useEffect(() => {
-
         setItems([])
         setCurrentPage(1)
-
-    }, [location, subLocation, query])
-
+    }, [ refreshCounter ])
 
 
     return !(items.length === 0 && !loading) ? (
