@@ -36,12 +36,12 @@ export function Login() {
 
             <div className={styles.formItem}>
                 <label>Email</label>
-                <TextInput value={eml} setValue={setEml} />
+                <TextInput type="email" value={eml} setValue={setEml} />
             </div>
 
             <div className={styles.formItem}>
                 <label>Password</label>
-                <TextInput value={pswd} setValue={setPswd} />
+                <TextInput type="password" value={pswd} setValue={setPswd} />
             </div>
 
             {
