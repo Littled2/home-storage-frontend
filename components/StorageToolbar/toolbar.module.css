@@ -45,6 +45,7 @@
     border-left: 2px solid var(--bg-colour);
     padding: 1rem 1.5rem;
     width: min-content;
+    background-color: transparent;
 }
 
 .locationSelected {
@@ -63,6 +64,7 @@
         padding-left: 6px;
         padding-right: 6px;
         max-width: 20%;
+
     }
 }
 

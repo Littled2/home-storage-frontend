@@ -23,6 +23,8 @@ export function StorageView({ location, subLocation, query=''  }) {
 
     const [ refreshCounter, setRefreshCounter ] = useState(0)
 
+    const [ options, setOptions ] = useState()
+
     const container = useRef()
 
     const { pb } = usePocket()
@@ -53,11 +55,7 @@ export function StorageView({ location, subLocation, query=''  }) {
 
     useEffect(() => {
 
-        if(loading) return
-
-        setLoading(true)
-
-        let options = {
+        let temp_options = {
             sort: "-created",
             expand: "location, sub_location, items(parent)"
         }
@@ -76,7 +74,19 @@ export function StorageView({ location, subLocation, query=''  }) {
             filters.push(`sub_location = "${subLocation}"`)
         }
 
-        options.filter = filters.join(" && ")
+        temp_options.filter = filters.join(" && ")
+
+        setOptions(temp_options)
+
+    }, [location, subLocation, query, refreshCounter, currentPage])
+
+    
+    // Triggered whenever the query changes
+    useEffect(() => {
+
+        if(loading) return
+
+        setLoading(true)
 
         pb.collection("items").getList(
             currentPage,
@@ -92,12 +102,15 @@ export function StorageView({ location, subLocation, query=''  }) {
             console.error("Error getting storage search results", err)
             setLoading(false)
         })
-    }, [location, subLocation, query, refreshCounter, currentPage])
+        
+    }, [ JSON.stringify(options), currentPage ])
 
 
     useEffect(() => {
+
         setItems([])
         setCurrentPage(1)
+
     }, [location, subLocation, query])
 
 

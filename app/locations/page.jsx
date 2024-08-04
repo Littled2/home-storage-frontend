@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import styles from "./styles.module.css"
 import Link from "next/link"
 import { LocationItem } from "@/components/LocationItem"
+import { MdAdd } from "react-icons/md"
 
 export default function LocationsPage() {
 
@@ -59,7 +60,7 @@ export default function LocationsPage() {
             </div>
 
             <Link href={"/new/location"} className={styles.newLocationBtn}>
-                <img src="/add.png" />
+                <MdAdd />
                 <span>Add Location</span>
             </Link>
 

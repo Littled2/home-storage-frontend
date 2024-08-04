@@ -10,6 +10,7 @@ import { BsPlus, BsPrinter } from "react-icons/bs"
 import { StorageToolbar } from "../components/StorageToolbar"
 import { StorageView } from "@/components/StorageView"
 import { useState } from "react"
+import { MdAdd } from "react-icons/md"
 
 export default function StoragePage() {
 
@@ -31,12 +32,12 @@ export default function StoragePage() {
             <StorageView location={location} subLocation={subLocation} query={query} />
 
             <Link href={"/new/item"} className={styles.newItemBtnMobile}>
-                <img src="/add.png" />
+                <MdAdd />
                 <span>Add Item</span>
             </Link>
 
             <Link href={"/new/item/desktop"} className={styles.newItemBtnDesktop}>
-                <img src="/add.png" />
+                <MdAdd />
                 <span>Add Item</span>
             </Link>
 

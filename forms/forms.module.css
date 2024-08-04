@@ -15,6 +15,7 @@
 
 .formItem > input[type=text],
 .formItem > input[type=password],
+.formItem > input[type=email],
 .formItem > input[type=number],
 .formItem > select,
 .formItem > textarea {

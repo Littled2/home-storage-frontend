@@ -73,6 +73,7 @@ export function ItemCard({ item, selected, setSelected, dragged, setDragged, set
                         <input
                             type="checkbox"
                             checked={selected.includes(item.id)}
+                            onChange={() => {}}
                             onClick={e => {
                                 e.stopPropagation()
 
